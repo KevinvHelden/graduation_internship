@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Text } from "./components/primitives";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Text text={"Heading 1"} variant={"h1"}/>
+      <Text text={"Heading 2"} variant={"h2"}/>
+      <Text text={"Heading 3"} variant={"h3"}/>
+      <Text text={"Heading 4"} variant={"h4"}/>
+      <Text text={"Heading 5"} variant={"h5"}/>
+      <Text text={"Heading 6"} variant={"h6"}/>
+      <Text text={"Paragraph"} variant={"p"}/>
+      <Text text={"Paragraph"} variant={"p"} weight={"strong"}/>
     </div>
   );
 }
