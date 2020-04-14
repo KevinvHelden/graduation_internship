@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import "./Text.css";
+import styles from "./Text.module.css";
 
 class Text extends PureComponent {
   constructor(props) {
@@ -33,7 +33,7 @@ class Text extends PureComponent {
     let ComponentType = variant;
 
     return (
-      <ComponentType className={"text " + weight}>
+      <ComponentType className={styles.root + " " + weight}>
         {text}
       </ComponentType>
     );
