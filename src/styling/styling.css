@@ -1,0 +1,31 @@
+@import './colours.css';
+
+:root {
+    /* Colours ----------------------------------------------------------------------------*/
+    --primary: var(--blue);
+    --primaryHover: var(--darkBlue);
+    --secondary: var(--orange);
+    --secondaryHover: var(--darkOrange);
+    --success: var(--green);
+    --successHover: var(--darkGreen);
+    --warning: var(--yellow);
+    --destructive: var(--red);
+    --destructiveHover: var(--darkRed);
+    --ghost: var(--white);
+    --default-typography-colour: var(--black);
+    /* Font Families ----------------------------------------------------------------------*/
+    --default-font-heading: "avenir";
+    --default-font-paragraph: "pt sans";
+    --default-font-mono: "pt mono";
+    /* Font Sizes -------------------------------------------------------------------------*/
+    --default-font-size-h1: 6rem;
+    --default-font-size-h2: 3.75rem;
+    --default-font-size-h3: 3rem;
+    --default-font-size-h4: 2.125rem;
+    --default-font-size-h5: 1.5rem;
+    --default-font-size-h6: 1.25rem;
+    --default-font-size-paragraph: 1rem;
+    /* Font Weight -------------------------------------------------------------------------*/
+    --black-font-weight-heading: 949;
+    --medium-font-weight-heading: 500;
+}

@@ -1,0 +1,59 @@
+@import "../../../styling/styling.css";
+
+.root {
+    width: 155px;
+    height: 40px;
+    color: white;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+}
+
+.root:hover {
+    cursor: pointer;
+}
+
+.root.primary {
+    background-color: var(--primary);
+}
+
+.root.primary:hover {
+    background-color: var(--primaryHover);
+}
+
+.root.secondary {
+    background-color: var(--secondary);
+}
+
+.root.secondary:hover {
+    background-color: var(--secondaryHover);
+}
+
+.root.success {
+    background-color: var(--success);
+}
+
+.root.success:hover {
+    background-color: var(--successHover);
+}
+
+.root.destructive {
+    background-color: var(--destructive);
+}
+
+.root.destructive:hover {
+    background-color: var(--destructiveHover);
+}
+
+.root.ghost {
+    background-color: var(--ghost);
+    border: 1px var(--black) solid;
+}
+
+.root.ghost p {
+    color: var(--default-typography-colour) !important;
+}
+
+.root.ghost:hover {
+    border: 1px var(--primary) solid;
+}
