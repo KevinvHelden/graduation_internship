@@ -1,0 +1,6 @@
+{
+    "name": "TemplateComponent",
+    "version": "0.0.1",
+    "main": "./TemplateComponent.js",
+    "private": true
+}

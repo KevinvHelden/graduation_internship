@@ -1,8 +1,10 @@
 @import "../../../styling/styling.css";
 
 .root {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .root img {
@@ -10,4 +12,8 @@
     max-height: 100%;
     height: auto;
     width: auto;
+}
+
+.root.invisible {
+    display: none;
 }

@@ -7,6 +7,7 @@
     border-radius: 25px;
     outline: none;
     border: none;
+    transition: var(--default-transition);
 }
 
 .root:hover {

@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 import { Text, Icon } from "./components/primitives";
-import { Button } from "./components/elements";
+import { Button, Searchbar } from "./components/elements";
 // import { Button } from "./components/elements";
 
 function App() {
   return (
     <div className="App">
+      <Searchbar searchItems={["Articles", "Users", "News", "Years"]} />
       <Icon icon={"search"}/>
       <Text text={"Heading 1"} variant={"h1"} />
       <Text text={"Heading 2"} variant={"h2"} />

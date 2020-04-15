@@ -1,0 +1,49 @@
+@import "../../../styling/styling.css";
+
+.root{
+    height: 50px;
+    width: 300px;
+    outline: none;
+    display: flex;
+}
+
+.root div {
+    position: absolute;
+    margin: 17.5px 0 17.5px 260px;
+}
+
+.root div:hover {
+    cursor: pointer;
+}
+
+.inner {
+    height: 100%;
+    border: 1px var(--grey5) solid;
+    border-radius: 25px;
+    color: var(--black);
+    font-family: var(--default-font-paragraph);
+    font-size: var(--default-font-size-paragraph);
+    width: 100%;
+    padding-left: 55px;
+    background-image: url("../../../images/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: 25px center;
+    outline: none;
+    transition: var(--default-transition);
+}
+
+.inner:hover {
+    border: 1px var(--primary) solid;
+}
+
+.inner:focus {
+    border: 1px var(--primary) solid;
+}
+
+.inner::placeholder {
+    color: var(--grey1);
+}
+
+.deleteIcon {
+    top: -50px;
+}

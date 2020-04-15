@@ -1,0 +1,6 @@
+{
+    "name": "Searchbar",
+    "version": "0.0.1",
+    "main": "./Searchbar.js",
+    "private": true
+}

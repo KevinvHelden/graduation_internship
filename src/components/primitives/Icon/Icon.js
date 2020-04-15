@@ -16,19 +16,27 @@ class Icon extends PureComponent {
     /**
      * The image in the icon
      */
-    icon: PropTypes.oneOf(["search", "edit", "delete"]).isRequired,
+    icon: PropTypes.oneOf(["search", "edit", "delete", "trash"]).isRequired,
+    /**
+     * Wether the icon should be visible or not
+     */
+    visible: PropTypes.bool,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    visible: true,
+  };
 
   render() {
-    const { icon } = this.props;
-    console.log(Icons.search.src);
+    const { icon, visible } = this.props;
 
     return (
-      <div className={classnames(styles.root)}>
+      <div className={classnames(styles.root, { [styles.invisible]: !visible })}>
         <img
-          src={icon === "search" && Icons.search.src}
+          src={
+            (icon === "search" && Icons.search.src) ||
+            (icon === "delete" && Icons.delete.src)
+          }
           alt={Icons.search.alt}
         />
       </div>
