@@ -1,0 +1,23 @@
+@import "../../../styling/styling.css";
+
+.root {
+    height: 100vh;
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.root p {
+    color: var(--grey1);
+}
+
+.root hr {
+    width: 100%;
+    border: 1px var(--grey1) solid;
+}
+
+.root .navSection {
+    margin-top: 50px;
+}
