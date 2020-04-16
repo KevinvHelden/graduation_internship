@@ -1,0 +1,6 @@
+{
+    "name": "Tablerow",
+    "version": "0.0.1",
+    "main": "./Tablerow.js",
+    "private": true
+}

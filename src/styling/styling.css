@@ -2,6 +2,7 @@
 
 :root {
   /* Colours ----------------------------------------------------------------------------*/
+  --primaryBrandColour: var(--black);
   --primary: var(--blue);
   --primaryHover: var(--darkBlue);
   --secondary: var(--orange);

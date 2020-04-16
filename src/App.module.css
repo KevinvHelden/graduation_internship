@@ -1,0 +1,13 @@
+.App {
+    display: flex;
+}
+
+.App .mainContent {
+    background-color: white;
+    margin: auto 0;
+    height: calc(100vh - 50px);
+    width: calc(100vw - 275px);
+    border-radius: 25px;
+    padding: 50px;
+    overflow: hidden;
+}
