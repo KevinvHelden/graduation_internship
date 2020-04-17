@@ -22,6 +22,14 @@
     display: none;
 }
 
+.tablerowItems:first-child {
+    width: 50%;
+}
+
+.root .tablerowItemContainer {
+    width: 25%;
+}
+
 .tablerowItems {
     display: flex;
     width: 100%;

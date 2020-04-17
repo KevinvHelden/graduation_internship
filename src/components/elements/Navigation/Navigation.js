@@ -31,8 +31,9 @@ class Navigation extends PureComponent {
         <Text text={section.title} mono light />
         <hr />
         {/* Maps section pages below the title */}
-        {section.pages.map((page) =>
+        {section.pages.map((page, id) =>
           <Text
+            key={id}
             text={page}
             strong
             light

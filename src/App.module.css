@@ -9,5 +9,5 @@
     width: calc(100vw - 275px);
     border-radius: 25px;
     padding: 50px;
-    overflow: hidden;
+    overflow: scroll;
 }

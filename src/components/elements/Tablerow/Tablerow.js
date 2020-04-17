@@ -19,20 +19,36 @@ class Tablerow extends PureComponent {
      * Determines if the talberow should be visible
      */
     invisible: PropTypes.bool,
+    /**
+     * The data shown in the tablerow
+     */
+    data: PropTypes.object.isRequired,
+    /**
+     * Update functions from parent
+     */
+    clickFunc: PropTypes.func,
   };
 
   static defaultProps = {
     invisible: false,
+    clickFunc: null,
   };
 
   componentDidMount() {
-    this.tablerowRef.current.addEventListener("click", this.selectFunction);
+    this.tablerowRef.current.addEventListener("click", this.handleClicked);
   }
 
   componentWillUnmount() {
-    this.tablerowRef.current.removeEventListener("click", this.selectFunction);
+    this.tablerowRef.current.removeEventListener("click", this.handleClicked);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.selectedProp) {
+      return { selected: props.selectedProp };
+    }
+  }
+
+  //Selects or deselects this component
   selectFunction = () => {
     const selected = this.state.selected;
     selected
@@ -40,9 +56,18 @@ class Tablerow extends PureComponent {
       : this.setState({ selected: true });
   };
 
+  handleClicked = () => {
+    //Deselects the select all tables function
+    this.props.clickFunc && this.props.clickFunc();
+    //Selects or deselects this component
+    this.selectFunction();
+  };
+
   handleTablerowItems = (data) => {
     const returnData = data.map((dataItem, id) => (
-      <Text text={dataItem} key={id} />
+      <div className={classnames(styles.tablerowItemContainer)}>
+        <Text text={dataItem} key={id} />
+      </div>
     ));
     return returnData;
   };
@@ -50,12 +75,7 @@ class Tablerow extends PureComponent {
   render() {
     const { tablerowRef, selectFunction, handleTablerowItems } = this;
     const { selected } = this.state;
-    const { invisible } = this.props;
-
-    const data = {
-      title: "Tablerow",
-      tablerowItems: ["Item", "Item", "Item"],
-    };
+    const { invisible, data } = this.props;
 
     return (
       <div
@@ -68,7 +88,9 @@ class Tablerow extends PureComponent {
       >
         <Checkbox checkedProp={selected} clickFunc={selectFunction} />
         <div className={classnames(styles.tablerowItems)}>
-          <Text text={data.title} strong />
+          <div className={classnames(styles.tablerowItemContainer)}>
+            <Text text={data.title} strong />
+          </div>
           {handleTablerowItems(data.tablerowItems)}
         </div>
       </div>
