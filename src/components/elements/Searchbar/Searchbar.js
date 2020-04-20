@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Searchbar.module.css";
 import classnames from "classnames";
-import RootRef from "@material-ui/core/RootRef";
 import { Icon } from "../../primitives";
 
 class Searchbar extends PureComponent {
@@ -29,13 +28,19 @@ class Searchbar extends PureComponent {
   componentDidMount() {
     //Executes handleSearch whenever input changes
     this.inputRef.current.addEventListener("input", this.handleSearch);
-    this.deleteValueRef.current.addEventListener("click", this.deleteInputValues);
+    this.deleteValueRef.current.addEventListener(
+      "click",
+      this.deleteInputValues
+    );
   }
 
   componentWillUnmount() {
     //Removes onInput function when it is no longer needed
     this.inputRef.current.removeEventListener("input", this.handleSearch);
-    this.deleteValueRef.current.removeEventListener("click", this.deleteInputValues);
+    this.deleteValueRef.current.removeEventListener(
+      "click",
+      this.deleteInputValues
+    );
   }
 
   filterFunction = (arrayToSearchIn) => {
@@ -94,12 +99,11 @@ class Searchbar extends PureComponent {
           type={"text"}
           placeholder={"Search"}
         />
-        <RootRef rootRef={deleteValueRef}>
-          <Icon
-            visible={visibleDeleteButton}
-            icon={"delete"}
-          />
-        </RootRef>
+        <Icon
+          reference={deleteValueRef}
+          visible={visibleDeleteButton}
+          icon={"delete"}
+        />
       </div>
     );
   }

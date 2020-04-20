@@ -10,6 +10,7 @@ class Tablerow extends PureComponent {
     super(props);
     this.state = {
       selected: false,
+      oldSelectedProp: this.props.selectedProp,
     };
     this.tablerowRef = React.createRef();
   }
@@ -24,14 +25,19 @@ class Tablerow extends PureComponent {
      */
     data: PropTypes.object.isRequired,
     /**
-     * Update functions from parent
+     * Click functions from parent
      */
     clickFunc: PropTypes.func,
+    /**
+     * Shows dividers between tablerows
+     */
+    divider: PropTypes.bool,
   };
 
   static defaultProps = {
     invisible: false,
     clickFunc: null,
+    divider: true,
   };
 
   componentDidMount() {
@@ -42,30 +48,43 @@ class Tablerow extends PureComponent {
     this.tablerowRef.current.removeEventListener("click", this.handleClicked);
   }
 
+  //Checks if state of checkedAll boxes has changed, if yes then check or uncheck all rows
   static getDerivedStateFromProps(props, state) {
-    if (props.selectedProp) {
-      return { selected: props.selectedProp };
+    if (
+      //Checks if the master checkbox in Table component has been pushed
+      props.selectedProp !== state.oldSelectedProp &&
+      //Checks if the master checkbox in Table has been changed by itself or by another tablerow
+      !props.tablerowUncheckedMain
+    ) {
+      return {
+        //Sets selected state equal to master checkbox state
+        selected: props.selectedProp,
+        //Updates old master checkbox state
+        oldSelectedProp: !state.oldSelectedProp,
+      };
+    } else {
+      return null;
     }
   }
 
   //Selects or deselects this component
   selectFunction = () => {
-    const selected = this.state.selected;
-    selected
-      ? this.setState({ selected: false })
-      : this.setState({ selected: true });
+    const { selected } = this.state;
+    //Change state of the tablerow to the opposite
+    this.setState({ selected: !selected });
   };
 
   handleClicked = () => {
-    //Deselects the select all tables function
-    this.props.clickFunc && this.props.clickFunc();
+    const { clickFunc } = this.props;
+    //Checks if there is a click function from parent before executing it
+    clickFunc && clickFunc();
     //Selects or deselects this component
     this.selectFunction();
   };
 
   handleTablerowItems = (data) => {
     const returnData = data.map((dataItem, id) => (
-      <div className={classnames(styles.tablerowItemContainer)}>
+      <div key={id} className={classnames(styles.tablerowItemContainer)}>
         <Text text={dataItem} key={id} />
       </div>
     ));
@@ -75,7 +94,7 @@ class Tablerow extends PureComponent {
   render() {
     const { tablerowRef, selectFunction, handleTablerowItems } = this;
     const { selected } = this.state;
-    const { invisible, data } = this.props;
+    const { invisible, data, divider } = this.props;
 
     return (
       <div
@@ -83,7 +102,8 @@ class Tablerow extends PureComponent {
         className={classnames(
           styles.root,
           { [styles.selected]: selected },
-          { [styles.invisible]: invisible }
+          { [styles.invisible]: invisible },
+          { [styles.divider]: divider }
         )}
       >
         <Checkbox checkedProp={selected} clickFunc={selectFunction} />

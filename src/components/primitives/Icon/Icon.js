@@ -28,10 +28,10 @@ class Icon extends PureComponent {
   };
 
   render() {
-    const { icon, visible } = this.props;
+    const { icon, visible, reference } = this.props;
 
     return (
-      <div className={classnames(styles.root, { [styles.invisible]: !visible })}>
+      <div ref={reference && reference} className={classnames(styles.root, { [styles.invisible]: !visible })}>
         <img
           src={
             (icon === "search" && Icons.search.src) ||

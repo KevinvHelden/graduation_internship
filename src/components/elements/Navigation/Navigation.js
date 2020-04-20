@@ -24,9 +24,9 @@ class Navigation extends PureComponent {
   //Dynamically maps all sections to the navigation
   handleContent = (sectionsData) => {
     //Maps all sections
-    const sections = sectionsData.map((section) =>
+    const sections = sectionsData.map((section, id) =>
       //One div per section in navigation
-      <div className={classnames(styles.navSection)}>
+      <div key={id} className={classnames(styles.navSection)}>
         {/* Section title */}
         <Text text={section.title} mono light />
         <hr />

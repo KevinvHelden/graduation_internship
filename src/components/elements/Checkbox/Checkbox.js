@@ -33,6 +33,8 @@ class Checkbox extends PureComponent {
       return {
         checked: props.checkedProp,
       };
+    }else {
+      return null
     }
   }
 

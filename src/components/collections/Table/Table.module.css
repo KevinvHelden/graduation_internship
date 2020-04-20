@@ -32,3 +32,8 @@
     margin: 0;
     margin-top: -5px;
 }
+
+.root .tableContent {
+    width: 100%;
+    height: auto;
+}

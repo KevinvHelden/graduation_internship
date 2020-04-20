@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Table.module.css";
 import classnames from "classnames";
@@ -11,88 +11,91 @@ class Table extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checkedAll: false,
-      rowsList: [],
-      visibleRowList: [],
-      selectedRowList: [],
+      mainChecked: false,
+      tablerowUncheckedMain: false,
     };
-    this.contentRef = React.createRef();
   }
 
   static propTypes = {
     /**
-     * Shows dividers between tablerows
+     * Shows borders in between table rows
      */
     dividers: PropTypes.bool,
   };
 
   static defaultProps = {
-    dividers: false,
+    dividers: true,
   };
 
-  //Function to enable checkedAll state
-  selectAllRows = () => {
-    const checkedAll = this.state.checkedAll;
-    checkedAll
-      ? this.setState({ checkedAll: false })
-      : this.setState({ checkedAll: true });
+  //The main checkbox was pressed
+  selectMainCheckbox = () => {
+    const { mainChecked } = this.state;
+    //Disable state that says tablerow clicked on master checkbox so that tables changes with this behaviour
+    this.setState({ tablerowUncheckedMain: false });
+    //Change state of checkbox
+    this.setState({ mainChecked: !mainChecked });
   };
 
-  turnOffSelectAllRows = () => {
-      this.setState({ checkedAll: false })
-      console.log(this.state.checkedAll);
-  }
+  //Turns off main checkbox because of tablerow click
+  turnOffMainCheckbox = () => {
+    //Enables state that says tablerow clicked on master checkbox so that no other tablerow changes
+    this.setState({ tablerowUncheckedMain: true });
+    //Turns off main checkbox
+    this.setState({ mainChecked: false });
+  };
 
-  //Formats the data in tablerows to place on the page
+  //Formats the data in the table header
   handleHeaderItems = () => {
     const headerItems = data.tableHeaderItems;
     const returnItems = headerItems.map((headerItem, id) => (
-      <div className={classnames(styles.tableHeaderItemContainer)}>
+      <div key={id} className={classnames(styles.tableHeaderItemContainer)}>
         <Text key={id} text={headerItem} strong />
       </div>
     ));
     return returnItems;
   };
 
-  //Formats the data in tablerows to place on the page
+  //Formats the data in tablerows
   handleRows = () => {
-    const { checkedAll } = this.state;
+    const { mainChecked, tablerowUncheckedMain } = this.state;
     const { dividers } = this.props;
-    const { turnOffSelectAllRows } = this;
+    const { turnOffMainCheckbox } = this;
     const tablerows = data.tableRows;
 
-    const returnRows = tablerows.map((tablerow, id) => (
-      <Fragment>
-        {dividers && <hr />}
-        <Tablerow
-          key={id}
-          selectedProp={checkedAll}
-          clickFunc={turnOffSelectAllRows}
-          data={tablerow}
-        />
-      </Fragment>
+    const returnRows = tablerows.map((tablerow) => (
+      <Tablerow
+        divider={dividers}
+        key={tablerow.id}
+        selectedProp={mainChecked}
+        clickFunc={turnOffMainCheckbox}
+        tablerowUncheckedMain={tablerowUncheckedMain}
+        invisible={false}
+        data={tablerow}
+      />
     ));
 
     return returnRows;
   };
 
   render() {
-    const { selectAllRows, contentRef, handleRows, handleHeaderItems } = this;
-    const { checkedAll } = this.state;
+    const {
+      selectMainCheckbox,
+      handleRows,
+      handleHeaderItems,
+    } = this;
+    const { mainChecked } = this.state;
     const headerItems = handleHeaderItems();
     const rows = handleRows();
-
-    console.log(this.state.rowsList);
 
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.tableHeader)}>
-          <Checkbox checkedProp={checkedAll} clickFunc={selectAllRows} />
+          <Checkbox checkedProp={mainChecked} clickFunc={selectMainCheckbox} />
           <div className={classnames(styles.tableHeaderItems)}>
             {headerItems}
           </div>
         </div>
-        <div ref={contentRef} className={classnames(styles.tableContent)}>
+        <div className={classnames(styles.tableContent)}>
           {rows}
         </div>
       </div>
