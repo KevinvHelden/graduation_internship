@@ -1,5 +1,5 @@
 const data = {
-    tableHeaderItems: ["table", "tableItem1", "tableItem2", "tableItem3"],
+  tableHeaderItems: ["Name", "Item1", "Item2", "Item3"],
   tableRows: [
     {
       title: "tableRow1",

@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./App.module.css";
 import classnames from "classnames";
 import { Text } from "./components/primitives";
-import { Navigation, Searchbar, Tablerow } from "./components/elements";
-import { Table } from "./components/collections";
+import { Navigation } from "./components/elements";
+import { Tableview } from "./components/templates";
+
+import data from "./components/collections/Table/Fixtures/data";
 
 function App() {
   return (
@@ -11,8 +13,7 @@ function App() {
       <Navigation />
       <div className={classnames(styles.mainContent)}>
         <Text text={"Articles"} variant={"h1"} />
-        <Searchbar searchItems={["apples", "bananas"]} />
-        <Table />
+        <Tableview data={data} searchbar/>
       </div>
     </div>
   );

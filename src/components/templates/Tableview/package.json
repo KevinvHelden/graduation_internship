@@ -1,0 +1,6 @@
+{
+    "name": "Tableview",
+    "version": "0.0.1",
+    "main": "./Tableview.js",
+    "private": true
+}

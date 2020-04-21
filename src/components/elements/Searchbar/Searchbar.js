@@ -19,6 +19,10 @@ class Searchbar extends PureComponent {
      * The items it has to search for
      */
     searchItems: PropTypes.array.isRequired,
+    /**
+     * What to do with the filtered search result
+     */
+    typeFunc: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -44,16 +48,17 @@ class Searchbar extends PureComponent {
   }
 
   filterFunction = (arrayToSearchIn) => {
+    const { typeFunc } = this.props;
     //The searchfield
     const searchField = this.inputRef.current;
     //The value in the searchfield
     const inputValue = searchField.value;
     //Filter given array with searchfield values
     const result = arrayToSearchIn.filter(
-      (arrayItem) => arrayItem.toLowerCase().indexOf(inputValue) === 0
+      (arrayItem) => arrayItem.title.toLowerCase().indexOf(inputValue) === 0
     );
     //Return filtered array
-    console.log(result);
+    typeFunc(result);
   };
 
   shouldShowDeleteButton = () => {
@@ -74,15 +79,13 @@ class Searchbar extends PureComponent {
     const searchField = this.inputRef.current;
     //Delete the value of the searchfield
     searchField.value = "";
-    //Check if it should hide the delete button (it should)
-    this.shouldShowDeleteButton();
+    //Check if it should hide the delete button (it should) and updates input so the searchbar returns the empty value
+    this.handleSearch();
   };
 
   handleSearch = () => {
-    //Array of items to search for
-    const searchItems = this.props.searchItems;
     //Executes searchFunction with searchItems as parameters
-    this.filterFunction(searchItems);
+    this.filterFunction(this.props.searchItems);
     //Decides if it should show the delete button for deleting the input value
     this.shouldShowDeleteButton();
   };

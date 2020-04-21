@@ -1,0 +1,46 @@
+@import "../../../styling/styling.css";
+
+.root {
+    width: 100%;
+    height: auto;
+}
+
+.root .tableHeader {
+    width: 100%;
+    height: auto;
+    display: flex;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.root .tableHeaderItems {
+    width: 100%;
+    height: 100%;
+    line-height: 14px;
+    display: flex;
+    justify-content: space-between;
+    padding: calc(calc(50px - 15px) / 2);
+    padding-left: 0;
+}
+
+.root .tableHeaderItems .tableHeaderItemContainer {
+    width: 25%;
+}
+
+.root hr {
+    border: .5px var(--grey5) solid;
+    margin: 0;
+    margin-top: -5px;
+}
+
+.root .tableContent {
+    width: 100%;
+    height: auto;
+}
+
+.root .actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}

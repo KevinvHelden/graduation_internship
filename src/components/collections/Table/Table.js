@@ -5,8 +5,6 @@ import classnames from "classnames";
 import { Tablerow, Checkbox } from "../../elements";
 import { Text } from "../../primitives";
 
-import data from "./Fixtures/data";
-
 class Table extends PureComponent {
   constructor(props) {
     super(props);
@@ -21,6 +19,14 @@ class Table extends PureComponent {
      * Shows borders in between table rows
      */
     dividers: PropTypes.bool,
+    /**
+     * The data used to fill the header
+     */
+    headerItems: PropTypes.array.isRequired,
+    /**
+     * The data used to fill the rows
+     */
+    rows: PropTypes.array.isRequired,
   };
 
   static defaultProps = {
@@ -46,8 +52,9 @@ class Table extends PureComponent {
 
   //Formats the data in the table header
   handleHeaderItems = () => {
-    const headerItems = data.tableHeaderItems;
-    const returnItems = headerItems.map((headerItem, id) => (
+    const { headerItems } = this.props;
+    const propsHeaderItems = headerItems;
+    const returnItems = propsHeaderItems && propsHeaderItems.map((headerItem, id) => (
       <div key={id} className={classnames(styles.tableHeaderItemContainer)}>
         <Text key={id} text={headerItem} strong />
       </div>
@@ -58,14 +65,14 @@ class Table extends PureComponent {
   //Formats the data in tablerows
   handleRows = () => {
     const { mainChecked, tablerowUncheckedMain } = this.state;
-    const { dividers } = this.props;
+    const { dividers, rows } = this.props;
     const { turnOffMainCheckbox } = this;
-    const tablerows = data.tableRows;
+    const tablerows = rows;
 
-    const returnRows = tablerows.map((tablerow) => (
+    const returnRows = tablerows && tablerows.map((tablerow) => (
       <Tablerow
-        divider={dividers}
         key={tablerow.id}
+        divider={dividers}
         selectedProp={mainChecked}
         clickFunc={turnOffMainCheckbox}
         tablerowUncheckedMain={tablerowUncheckedMain}
@@ -78,11 +85,7 @@ class Table extends PureComponent {
   };
 
   render() {
-    const {
-      selectMainCheckbox,
-      handleRows,
-      handleHeaderItems,
-    } = this;
+    const { selectMainCheckbox, handleRows, handleHeaderItems } = this;
     const { mainChecked } = this.state;
     const headerItems = handleHeaderItems();
     const rows = handleRows();
@@ -95,9 +98,7 @@ class Table extends PureComponent {
             {headerItems}
           </div>
         </div>
-        <div className={classnames(styles.tableContent)}>
-          {rows}
-        </div>
+        <div className={classnames(styles.tableContent)}>{rows}</div>
       </div>
     );
   }
