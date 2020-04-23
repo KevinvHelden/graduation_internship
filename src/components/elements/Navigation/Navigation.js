@@ -48,7 +48,7 @@ class Navigation extends PureComponent {
   render() {
     const { handleContent } = this;
     const brandInfo = {
-      brandName: "Eindhoven Airport",
+      brandName: "Glamorous Goat",
       sections: [
         {
           title: "Dashboard",

@@ -1,39 +1,52 @@
 @import "../../../styling/styling.css";
 
+:root {
+  --container-padding: 50px;
+  --height-container: calc(
+    calc(100vh - 50px) - var(--container-padding)
+  );
+  --height-actions: 50px;
+}
+
 .root {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .root .tableHeader {
-    width: 100%;
-    height: auto;
-    display: flex;
-    height: 50px;
-    margin-bottom: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  height: 50px;
+  border-bottom: 1px var(--grey5) solid;
+  background-color: var(--white);
 }
 
 .root .tableHeaderItems {
-    width: 100%;
-    height: 100%;
-    line-height: 14px;
-    display: flex;
-    justify-content: space-between;
-    padding: calc(calc(50px - 15px) / 2);
-    padding-left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: calc(calc(50px - 15px) / 2);
+  padding-left: 0;
+}
+
+.root .tableHeaderItems p {
+  color: var(--grey1);
 }
 
 .root .tableHeaderItems .tableHeaderItemContainer {
-    width: 25%;
-}
-
-.root hr {
-    border: .5px var(--grey5) solid;
-    margin: 0;
-    margin-top: -5px;
+  width: 25%;
 }
 
 .root .tableContent {
-    width: 100%;
-    height: auto;
+  overflow: scroll;
+  width: 100%;
+  height: calc(calc(var(--height-container) - var(--height-actions)) - 200px);
+}
+
+.root .tableContent > :last-child {
+  border-bottom: none;
+  margin-bottom: 25px;
 }

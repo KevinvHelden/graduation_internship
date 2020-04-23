@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Tableview.module.css";
 import classnames from "classnames";
 
-import { Searchbar } from "../../elements";
+import { Searchbar, Button } from "../../elements";
 import { Table } from "../../collections";
 
 class Tableview extends PureComponent {
@@ -75,11 +75,15 @@ class Tableview extends PureComponent {
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.actions)}>
+          <Button text={"Add article"} />
+          <Button text={"Filter"} variant={"secondary"} />
           {searchbar && (
             <Searchbar searchItems={initialTablerows} typeFunc={updateRows} />
           )}
         </div>
-        <Table headerItems={tableheaderItems} rows={visibleTableRows} />
+        <div className={classnames(styles.table)}>
+          <Table headerItems={tableheaderItems} rows={visibleTableRows} />
+        </div>
       </div>
     );
   }

@@ -3,6 +3,8 @@
 .root {
     width: 100%;
     height: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .root .tableHeader {
@@ -39,8 +41,15 @@
 }
 
 .root .actions {
-    width: 100%;
+    width: auto;
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 25px;
+    align-items: center;
+}
+
+.root .actions > * {
+    margin-right: 30px;
+}
+
+.root .table {
+    margin-top: 25px;
 }

@@ -8,6 +8,6 @@
     height: calc(100vh - 50px);
     width: calc(100vw - 275px);
     border-radius: 25px;
-    padding: 50px;
+    padding: 50px 50px 0 50px;
     overflow: scroll;
 }

@@ -2,14 +2,14 @@
 
 .root{
     height: 50px;
-    width: 300px;
+    width: auto;
     outline: none;
     display: flex;
 }
 
 .root div {
     position: absolute;
-    margin: 17.5px 0 17.5px 260px;
+    margin: 17.5px 0 17.5px 360px;
 }
 
 .root div:hover {
@@ -23,13 +23,14 @@
     color: var(--black);
     font-family: var(--default-font-paragraph);
     font-size: var(--default-font-size-paragraph);
-    width: 100%;
-    padding-left: 55px;
+    width: 300px;
+    padding: 0 50px 0 55px;
     background-image: url("../../../images/icons/search.svg");
     background-repeat: no-repeat;
     background-position: 25px center;
     outline: none;
     transition: var(--default-transition);
+    transform-origin: right;
 }
 
 .inner:hover {
@@ -38,6 +39,12 @@
 
 .inner:focus {
     border: 1px var(--primary) solid;
+    width: 400px;
+}
+
+.inner:not(:placeholder-shown) {
+    border: 1px var(--primary) solid;
+    width: 400px;
 }
 
 .inner::placeholder {

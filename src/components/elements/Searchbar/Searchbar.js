@@ -100,6 +100,7 @@ class Searchbar extends PureComponent {
           className={classnames(styles.inner)}
           ref={inputRef}
           type={"text"}
+          name={"input"}
           placeholder={"Search"}
         />
         <Icon
