@@ -3,26 +3,41 @@
 .root {
   color: var(--default-typography-colour);
   text-align: left;
+  transition: var(--default-transition);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.strong {
+.root.strong {
   font-weight: bold;
 }
 
-.mono {
+.root.mono {
   font-family: var(--default-font-mono);
 }
 
-.light {
+.root.light {
   color: white;
 }
 
-.center {
+.root.center {
   text-align: center;
 }
 
-.right {
+.root.right {
   text-align: right;
+}
+
+.root.succes {
+  color: var(--green);
+}
+
+.root.warning {
+  color: var(--orange);
+}
+
+.root.error {
+  color: var(--red);
 }
 
 h1,
@@ -60,32 +75,32 @@ h6 {
 
 h1 {
   font-size: var(--default-font-size-h1);
-  line-height: var(--default-font-size-h1);
+  line-height: calc(var(--default-font-size-h1) + 10px);
 }
 
 h2 {
   font-size: var(--default-font-size-h2);
-  line-height: var(--default-font-size-h2);
+  line-height: calc(var(--default-font-size-h2) + 10px);
 }
 
 h3 {
   font-size: var(--default-font-size-h3);
-  line-height: var(--default-font-size-h3);
+  line-height: calc(var(--default-font-size-h3) + 10px);
 }
 
 h4 {
   font-size: var(--default-font-size-h4);
-  line-height: var(--default-font-size-h4);
+  line-height: calc(var(--default-font-size-h4) + 10px);
 }
 
 h5 {
   font-size: var(--default-font-size-h5);
-  line-height: var(--default-font-size-h5);
+  line-height: calc(var(--default-font-size-h5) + 10px);
 }
 
 h6 {
   font-size: var(--default-font-size-h6);
-  line-height: var(--default-font-size-h6);
+  line-height: calc(var(--default-font-size-h6) + 10px);
 }
 
 p {

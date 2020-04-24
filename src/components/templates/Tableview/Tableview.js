@@ -76,7 +76,7 @@ class Tableview extends PureComponent {
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.actions)}>
           <Button text={"Add article"} />
-          <Button text={"Filter"} variant={"secondary"} />
+          <Button text={"Filter"} variant={"ghost"} />
           {searchbar && (
             <Searchbar searchItems={initialTablerows} typeFunc={updateRows} />
           )}

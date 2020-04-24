@@ -16,7 +16,7 @@ class Tablepage extends PureComponent {
     return (
       <Fragment>
         <div className={classnames(styles.mainTitle)}>
-          <Text text={title} variant={"h1"} />
+          <Text text={title} variant={"h2"} />
         </div>
         <div className={classnames(styles.mainContent)}>
           <Tableview data={data} searchbar />

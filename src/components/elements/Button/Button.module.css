@@ -47,14 +47,19 @@
 }
 
 .root.ghost {
-    background-color: var(--ghost);
-    border: 1px var(--black) solid;
+    background-color: var(--white);
+    border: 1px var(--secondary) solid;
 }
 
 .root.ghost p {
-    color: var(--default-typography-colour) !important;
+    color: var(--secondary) !important;
 }
 
 .root.ghost:hover {
-    border: 1px var(--primary) solid;
+    color: var(--secondaryHover) !important;
+    border: 1px var(--secondaryHover) solid;
+}
+
+.root.ghost:hover p {
+    color: var(--secondaryHover) !important;
 }

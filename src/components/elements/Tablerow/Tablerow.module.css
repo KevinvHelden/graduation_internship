@@ -2,7 +2,8 @@
 
 .root {
     background-color: var(--white);
-    width: 100%;
+    width: calc(100% - 25px);
+    margin-right: 25px;
     height: 50px;
     display: flex;
 }
@@ -24,8 +25,14 @@
     display: none;
 }
 
+.root .tablerowItems > :first-child {
+    width: 50%;
+}
+
 .root .tablerowItemContainer {
-    width: 25%;
+    width: calc(50% / 3);
+    white-space: nowrap;
+    padding-right: 30px;
 }
 
 .tablerowItems {

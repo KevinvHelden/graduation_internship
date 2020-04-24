@@ -19,6 +19,10 @@ class Text extends PureComponent {
      */
     variant: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6", "p"]),
     /**
+     * The text decoration
+     */
+    decoration: PropTypes.oneOf(["success", "warning", "error"]),
+    /**
      * Wether the text is bold
      */
     strong: PropTypes.bool,
@@ -44,7 +48,7 @@ class Text extends PureComponent {
   };
 
   render() {
-    const { text, variant, strong, mono, align, light } = this.props;
+    const { text, variant, decoration, strong, mono, align, light } = this.props;
     let ComponentType = variant;
 
     return (
@@ -55,7 +59,10 @@ class Text extends PureComponent {
           { [styles.mono]: mono },
           { [styles.light]: light },
           { [styles.center]: align === "center" },
-          { [styles.right]: align === "right" }
+          { [styles.right]: align === "right" },
+          { [styles.success]: decoration === "success" },
+          { [styles.warning]: decoration === "warning" },
+          { [styles.error]: decoration === "error" },
         )}
       >
         {mono ? text.toUpperCase() : text}

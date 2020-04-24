@@ -2,9 +2,7 @@
 
 :root {
   --container-padding: 50px;
-  --height-container: calc(
-    calc(100vh - 50px) - var(--container-padding)
-  );
+  --height-container: calc(calc(100vh - 50px) - var(--container-padding));
   --height-actions: 50px;
 }
 
@@ -14,7 +12,8 @@
 }
 
 .root .tableHeader {
-  width: 100%;
+  width: calc(100% - 29px);
+  margin-right: 29px;
   height: auto;
   display: flex;
   height: 50px;
@@ -32,12 +31,12 @@
   padding-left: 0;
 }
 
-.root .tableHeaderItems p {
-  color: var(--grey1);
+.root .tableHeaderItems > :first-child {
+  width: 50%;
 }
 
-.root .tableHeaderItems .tableHeaderItemContainer {
-  width: 25%;
+.root .tableHeaderItems > * {
+  width: calc(50% / 3);
 }
 
 .root .tableContent {
@@ -49,4 +48,30 @@
 .root .tableContent > :last-child {
   border-bottom: none;
   margin-bottom: 25px;
+}
+
+/* width */
+.root .tableContent::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.root .tableContent::-webkit-scrollbar-track {
+  background: var(--grey5);
+  border-radius: 10px;
+}
+
+/* Handle */
+.root .tableContent::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.root .tableContent::-webkit-scrollbar-thumb:hover {
+  background: var(--darkBlue);
+}
+
+.root .tableContent {
+  overflow-x: hidden;
 }

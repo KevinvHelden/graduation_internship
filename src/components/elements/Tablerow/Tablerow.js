@@ -109,7 +109,7 @@ class Tablerow extends PureComponent {
         <Checkbox checkedProp={selected} clickFunc={selectFunction} />
         <div className={classnames(styles.tablerowItems)}>
           <div className={classnames(styles.tablerowItemContainer)}>
-            <Text text={data.title} strong />
+            <Text text={data.title} />
           </div>
           {handleTablerowItems(data.tablerowItems)}
         </div>

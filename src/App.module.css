@@ -1,13 +1,18 @@
+:root {
+  --navigation-width: 300px;
+  --main-margin: 25px;
+}
+
 .App {
-    display: flex;
+  display: flex;
 }
 
 .App .mainContent {
-    background-color: white;
-    margin: auto 0;
-    height: calc(100vh - 50px);
-    width: calc(100vw - 275px);
-    border-radius: 25px;
-    padding: 50px 50px 0 50px;
-    overflow: scroll;
+  background-color: white;
+  margin: auto 0;
+  height: calc(100vh - 50px);
+  width: calc(100vw - calc(var(--navigation-width) + var(--main-margin)));
+  border-radius: 25px;
+  padding: 50px 50px 0 50px;
+  overflow: scroll;
 }
