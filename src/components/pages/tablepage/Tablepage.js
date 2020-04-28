@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from "react";
+import PropTypes from "prop-types";
 import styles from "./Tablepage.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
@@ -9,6 +10,17 @@ class Tablepage extends PureComponent {
     super(props);
     this.state = {};
   }
+
+  static propTypes = {
+    /**
+     * The data shown in the table
+     */
+    data: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    // data: null
+  };
 
   render() {
     const { title, data } = this.props;
