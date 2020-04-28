@@ -1,9 +1,10 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./Table.module.css";
 import classnames from "classnames";
 import { Tablerow, Checkbox } from "../../elements";
 import { Text } from "../../primitives";
+import { Editbar } from "../../components";
 
 class Table extends PureComponent {
   constructor(props) {
@@ -11,6 +12,7 @@ class Table extends PureComponent {
     this.state = {
       mainChecked: false,
       tablerowUncheckedMain: false,
+      selectedRows: [],
     };
   }
 
@@ -50,15 +52,47 @@ class Table extends PureComponent {
     this.setState({ mainChecked: false });
   };
 
+  checkIfSelected = (id, selectedState) => {
+    const { selectedRows } = this.state;
+    const selectedArr = [].concat(selectedRows);
+    //Find the index of the deselected row
+    const arrIndex = selectedArr.findIndex(i => i.id === id);
+    //The tablerow was selected and isn't in the current selected array
+    if (selectedState && !selectedRows.includes({id: id, selected: selectedState})){
+      console.log("I got selected.");
+      selectedArr.push({id: id, selected: selectedState})
+    //The tablerow was deselected and is in the current selected array
+    }else if(!selectedState && selectedRows.includes({id: id, selected: selectedState})){
+      console.log("I got deselected.");
+      selectedArr.splice(arrIndex, 1)
+    }else if (selectedState && selectedRows.includes({id: id, selected: selectedState})) {
+      console.log("I got selected but was already in the array...");
+      selectedArr.splice(arrIndex, 1);
+    }else if (!selectedState && !selectedRows.includes({id: id, selected: selectedState})) {
+      console.log("I got deselected but i wasn't in the array in the first place...");
+      selectedArr.splice(arrIndex, 1);
+    }
+    this.setState({
+      selectedRows: selectedArr
+    });
+    console.log(selectedArr);
+  };
+
+  handleRowFunctions = () => {
+    this.turnOffMainCheckbox();
+  };
+
   //Formats the data in the table header
   handleHeaderItems = () => {
     const { headerItems } = this.props;
     const propsHeaderItems = headerItems;
-    const returnItems = propsHeaderItems && propsHeaderItems.map((headerItem, id) => (
-      <div key={id} className={classnames(styles.tableHeaderItemContainer)}>
-        <Text key={id} text={headerItem} strong />
-      </div>
-    ));
+    const returnItems =
+      propsHeaderItems &&
+      propsHeaderItems.map((headerItem, id) => (
+        <div key={id} className={classnames(styles.tableHeaderItemContainer)}>
+          <Text key={id} text={headerItem} strong />
+        </div>
+      ));
     return returnItems;
   };
 
@@ -66,40 +100,49 @@ class Table extends PureComponent {
   handleRows = () => {
     const { mainChecked, tablerowUncheckedMain } = this.state;
     const { dividers, rows } = this.props;
-    const { turnOffMainCheckbox } = this;
+    const { handleRowFunctions, checkIfSelected } = this;
     const tablerows = rows;
 
-    const returnRows = tablerows && tablerows.map((tablerow) => (
-      <Tablerow
-        key={tablerow.id}
-        divider={dividers}
-        selectedProp={mainChecked}
-        clickFunc={turnOffMainCheckbox}
-        tablerowUncheckedMain={tablerowUncheckedMain}
-        invisible={false}
-        data={tablerow}
-      />
-    ));
+    const returnRows =
+      tablerows &&
+      tablerows.map((tablerow) => (
+        <Tablerow
+          key={tablerow.id}
+          divider={dividers}
+          selectedProp={mainChecked}
+          clickFunc={handleRowFunctions}
+          updateFunc={checkIfSelected}
+          tablerowUncheckedMain={tablerowUncheckedMain}
+          invisible={false}
+          data={tablerow}
+        />
+      ));
 
     return returnRows;
   };
 
   render() {
     const { selectMainCheckbox, handleRows, handleHeaderItems } = this;
-    const { mainChecked } = this.state;
+    const { mainChecked, selectedRows } = this.state;
     const headerItems = handleHeaderItems();
     const rows = handleRows();
 
     return (
-      <div className={classnames(styles.root)}>
-        <div className={classnames(styles.tableHeader)}>
-          <Checkbox checkedProp={mainChecked} clickFunc={selectMainCheckbox} />
-          <div className={classnames(styles.tableHeaderItems)}>
-            {headerItems}
+      <Fragment>
+        <div className={classnames(styles.root)}>
+          <div className={classnames(styles.tableHeader)}>
+            <Checkbox
+              checkedProp={mainChecked}
+              clickFunc={selectMainCheckbox}
+            />
+            <div className={classnames(styles.tableHeaderItems)}>
+              {headerItems}
+            </div>
           </div>
+          <div className={classnames(styles.tableContent)}>{rows}</div>
         </div>
-        <div className={classnames(styles.tableContent)}>{rows}</div>
-      </div>
+        <Editbar selected={selectedRows} />
+      </Fragment>
     );
   }
 }

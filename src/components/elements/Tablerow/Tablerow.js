@@ -48,6 +48,10 @@ class Tablerow extends PureComponent {
     this.tablerowRef.current.removeEventListener("click", this.handleClicked);
   }
 
+  componentDidUpdate() {
+    this.props.updateFunc(this.props.data.id, this.state.selected);
+  }
+
   //Checks if state of checkedAll boxes has changed, if yes then check or uncheck all rows
   static getDerivedStateFromProps(props, state) {
     if (
@@ -75,9 +79,10 @@ class Tablerow extends PureComponent {
   };
 
   handleClicked = () => {
-    const { clickFunc } = this.props;
+    const { clickFunc, data } = this.props;
+    const { selected } = this.state;
     //Checks if there is a click function from parent before executing it
-    clickFunc && clickFunc();
+    clickFunc && clickFunc( data.id, selected );
     //Selects or deselects this component
     this.selectFunction();
   };
