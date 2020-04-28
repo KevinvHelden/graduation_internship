@@ -1,0 +1,55 @@
+@import "../../../styling/styling.css";
+
+:root {
+    --editbar-height: 80px;
+    --editbar-width: 800px;
+}
+
+.root {
+    position: fixed;
+    top: 100vh;
+    left: calc(calc(50% + 130px) - 400px);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    width: var(--editbar-width);
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+    padding: 0 30px;
+    z-index: 1;
+    align-items: center;
+    transition: var(--default-transition);
+}
+
+.root.visible {
+    top: calc(100vh - 155px);
+}
+
+.root .selected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.root .selected .selectedContainer {
+    height: 33px;
+    min-width: 38px;
+    width: auto;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.root .actions {
+    margin-left: auto;
+    width: auto;
+    display: flex;
+}
+
+.root .actions button {
+    margin-left: 25px;
+}
