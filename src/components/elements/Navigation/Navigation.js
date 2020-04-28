@@ -51,7 +51,7 @@ class Navigation extends PureComponent {
         <div className={classnames(styles.pageLinks)}>
           {handleContent(pageInfo.pages)}
         </div>
-        <Button text={"Log out"} variant={"destructive"} />
+        <Button text={"Log out"} variant={"destructive"} iconBefore={"exit"} />
       </div>
     );
   }

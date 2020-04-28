@@ -8,10 +8,22 @@
     outline: none;
     border: none;
     transition: var(--default-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.root.hasIcon > :first-child {
+    margin-right: 10px;
 }
 
 .root:hover {
     cursor: pointer;
+}
+
+.root:disabled {
+    opacity: 0.2;
+    pointer-events: none;
 }
 
 .root.primary {
@@ -29,7 +41,6 @@
 .root.secondary:hover {
     background-color: var(--secondaryHover);
 }
-
 .root.success {
     background-color: var(--success);
 }

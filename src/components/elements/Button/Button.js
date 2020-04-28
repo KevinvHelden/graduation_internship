@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.css";
 import classnames from "classnames";
-import { Text } from "../../primitives";
+import { Text, Icon } from "../../primitives";
 
 class Button extends PureComponent {
   constructor(props) {
@@ -25,6 +25,14 @@ class Button extends PureComponent {
       "destructive",
       "ghost",
     ]),
+    /**
+     * An icon showed before the text in Button
+     */
+    iconBefore: PropTypes.node,
+    /**
+     * An icon showed after the text in Button
+     */
+    iconAfter: PropTypes.node,
   };
 
   static defaultProps = {
@@ -33,7 +41,7 @@ class Button extends PureComponent {
   };
 
   render() {
-    const { text, variant } = this.props;
+    const { text, variant, disabled, iconBefore, iconAfter } = this.props;
 
     return (
       <button
@@ -43,10 +51,14 @@ class Button extends PureComponent {
           { [styles.secondary]: variant === "secondary" },
           { [styles.success]: variant === "success" },
           { [styles.destructive]: variant === "destructive" },
-          { [styles.ghost]: variant === "ghost" }
+          { [styles.ghost]: variant === "ghost" },
+          { [styles.hasIcon]: iconBefore || iconAfter }
         )}
+        disabled={disabled}
       >
+        {iconBefore && <Icon icon={iconBefore} />}
         <Text text={text} align={"center"} light strong />
+        {iconAfter && <Icon icon={iconAfter} />}
       </button>
     );
   }

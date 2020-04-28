@@ -106,7 +106,7 @@ class Searchbar extends PureComponent {
         <Icon
           reference={deleteValueRef}
           visible={visibleDeleteButton}
-          icon={"delete"}
+          icon={"clear"}
         />
       </div>
     );
