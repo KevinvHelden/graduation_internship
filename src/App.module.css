@@ -1,18 +1,23 @@
-:root {
-  --navigation-width: 300px;
-  --main-margin: 25px;
-}
-
 .App {
   display: flex;
 }
 
 .App .mainContent {
   background-color: white;
-  margin: auto 0;
-  height: calc(100vh - 50px);
-  width: calc(100vw - calc(var(--navigation-width) + var(--main-margin)));
-  border-radius: 25px;
-  padding: 50px 50px 0 50px;
+  height: 100vh;
+  width: 100%;
+  padding: var(--layout-medium);
   overflow: scroll;
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    padding: var(--layout-medium);
+  }
+
+  .App .mainContent {
+    height: calc(100vh - calc(var(--layout-medium) * 2));
+    border-radius: var(--border-radius-large);
+    padding: var(--layout-large);
+  }
 }

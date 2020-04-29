@@ -2,8 +2,9 @@
 
 :root {
   --container-padding: 50px;
-  --height-container: calc(calc(100vh - 50px) - var(--container-padding));
   --height-actions: 50px;
+  --height-container: calc(calc(100vh - 50px) - var(--container-padding));
+  --scrollbar-width: 4px;
 }
 
 .root {
@@ -12,59 +13,55 @@
 }
 
 .root .tableHeader {
-  width: calc(100% - 29px);
-  margin-right: 29px;
+  width: calc(100% - calc(var(--layout-medium) + var(--scrollbar-width)));
+  margin-right: calc(var(--layout-medium) + var(--scrollbar-width));
   height: auto;
   display: flex;
   height: 50px;
-  border-bottom: 1px var(--grey5) solid;
+  border-bottom: 1px var(--border-inactive) solid;
   background-color: var(--white);
 }
 
 .root .tableHeaderItems {
   width: 100%;
   height: 100%;
-  line-height: 14px;
+  line-height: var(--default-font-size-paragraph);
   display: flex;
   justify-content: space-between;
   padding: calc(calc(50px - 15px) / 2);
   padding-left: 0;
 }
 
-.root .tableHeaderItems > :first-child {
-  width: 50%;
-}
-
 .root .tableHeaderItems > * {
-  width: calc(50% / 3);
+  width: 100%;
 }
 
 .root .tableContent {
   overflow: scroll;
   width: 100%;
-  height: calc(calc(var(--height-container) - var(--height-actions)) - 200px);
+  height: calc(calc(var(--height-container) - var(--height-actions)) - 225px);
 }
 
 .root .tableContent > :last-child {
   border-bottom: none;
-  margin-bottom: 25px;
 }
 
+/* Scrollbar --------------------------------------------------------------------------------*/
 /* width */
 .root .tableContent::-webkit-scrollbar {
-  width: 4px;
+  width: var(--scrollbar-width);
 }
 
 /* Track */
 .root .tableContent::-webkit-scrollbar-track {
-  background: var(--grey5);
-  border-radius: 10px;
+  background: var(--border-inactive);
+  border-radius: var(--border-radius-small);
 }
 
 /* Handle */
 .root .tableContent::-webkit-scrollbar-thumb {
   background: var(--primary);
-  border-radius: 10px;
+  border-radius: var(--border-radius-small);
 }
 
 /* Handle on hover */
@@ -75,3 +72,20 @@
 .root .tableContent {
   overflow-x: hidden;
 }
+
+@media only screen and (min-width: 768px) {
+  .root .tableHeaderItems > * {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root .tableHeaderItems > :first-child {
+    width: 50%;
+  }
+  
+  .root .tableHeaderItems > * {
+    width: calc(50% / 3);
+  }
+}
+

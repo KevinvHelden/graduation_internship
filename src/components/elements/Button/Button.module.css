@@ -1,76 +1,101 @@
 @import "../../../styling/styling.css";
 
 .root {
-    width: 155px;
-    height: 40px;
-    color: white;
-    border-radius: 25px;
-    outline: none;
-    border: none;
-    transition: var(--default-transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: var(--button-width-square);
+  height: var(--button-height);
+  color: white;
+  outline: none;
+  border: none;
+  transition: var(--default-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.root.hasIcon > :first-child {
-    margin-right: 10px;
+.root.rounded {
+  border-radius: var(--border-radius-small);
+}
+
+.root .textContainer {
+  display: none;
 }
 
 .root:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .root:disabled {
-    opacity: 0.2;
-    pointer-events: none;
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 .root.primary {
-    background-color: var(--primary);
-}
-
-.root.primary:hover {
-    background-color: var(--primaryHover);
+  background-color: var(--primary);
 }
 
 .root.secondary {
-    background-color: var(--secondary);
+  background-color: var(--secondary);
 }
 
-.root.secondary:hover {
-    background-color: var(--secondaryHover);
-}
 .root.success {
-    background-color: var(--success);
-}
-
-.root.success:hover {
-    background-color: var(--successHover);
+  background-color: var(--success);
 }
 
 .root.destructive {
-    background-color: var(--destructive);
-}
-
-.root.destructive:hover {
-    background-color: var(--destructiveHover);
+  background-color: var(--destructive);
 }
 
 .root.ghost {
-    background-color: var(--white);
-    border: 1px var(--secondary) solid;
+  background-color: var(--white);
+  border: 1px var(--secondary) solid;
 }
 
 .root.ghost p {
-    color: var(--secondary) !important;
+  color: var(--secondary) !important;
 }
 
-.root.ghost:hover {
+@media only screen and (min-width: 768px) {
+  .root {
+    width: var(--button-width-long);
+  }
+
+  .root.rounded {
+    border-radius: var(--border-radius-large);
+  }
+
+  .root .textContainer {
+    display: block;
+  }
+
+  .root.hasIcon > :first-child {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .root.primary:hover {
+    background-color: var(--primaryHover);
+  }
+
+  .root.secondary:hover {
+    background-color: var(--secondaryHover);
+  }
+
+  .root.success:hover {
+    background-color: var(--successHover);
+  }
+
+  .root.destructive:hover {
+    background-color: var(--destructiveHover);
+  }
+
+  .root.ghost:hover {
     color: var(--secondaryHover) !important;
     border: 1px var(--secondaryHover) solid;
-}
+  }
 
-.root.ghost:hover p {
+  .root.ghost:hover p {
     color: var(--secondaryHover) !important;
+  }
 }

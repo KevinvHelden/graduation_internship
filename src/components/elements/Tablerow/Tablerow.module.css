@@ -1,46 +1,62 @@
 @import "../../../styling/styling.css";
 
+:root {
+  --tablerow-selected: var(--grey6);
+}
+
 .root {
-    background-color: var(--white);
-    width: calc(100% - 25px);
-    margin-right: 25px;
-    height: 50px;
-    display: flex;
+  background-color: var(--white);
+  width: calc(100% - var(--layout-medium));
+  margin-right: var(--layout-medium);
+  height: 50px;
+  display: flex;
 }
 
 .root:hover {
-    background-color: var(--grey6);
-    cursor: pointer;
+  background-color: var(--tablerow-selected);
+  cursor: pointer;
 }
 
 .root.divider {
-    border-bottom: 1px var(--grey5) solid;
+  border-bottom: 1px var(--border-inactive) solid;
 }
 
 .root.selected {
-    background-color: var(--grey6);
+  background-color: var(--tablerow-selected);
 }
 
 .root.invisible {
-    display: none;
-}
-
-.root .tablerowItems > :first-child {
-    width: 50%;
+  display: none;
 }
 
 .root .tablerowItemContainer {
-    width: calc(50% / 3);
-    white-space: nowrap;
-    padding-right: 30px;
+  width: 100%;
+  white-space: nowrap;
+  padding-right: var(--layout-medium);
 }
 
 .tablerowItems {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    line-height: 14px;
-    margin: auto 0;
-    padding: calc(calc(50px - 15px) / 2);
-    padding-left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  line-height: var(--default-font-size-paragraph);
+  margin: auto 0;
+  padding: calc(calc(50px - 15px) / 2);
+  padding-left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .root .tablerowItemContainer {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root .tablerowItems > :first-child {
+    width: 50%;
+  }
+  
+  .root .tablerowItemContainer {
+    width: calc(50% / 3);
+  }
 }

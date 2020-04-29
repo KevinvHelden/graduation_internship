@@ -14,11 +14,18 @@
   --destructiveHover: var(--darkRed);
   --ghost: var(--white);
   --default-typography-colour: var(--black);
-  /* Font Families ----------------------------------------------------------------------*/
+
+  --border-inactive: var(--grey5);
+  --border-active: var(--primary);
+
+  /* Font ----------------------------------------------------------------------*/
+
+  /* Families */
   --default-font-heading: "avenir";
   --default-font-paragraph: "pt sans";
   --default-font-mono: "pt mono";
-  /* Font Sizes -------------------------------------------------------------------------*/
+
+  /* Sizes */
   --default-font-size-h1: 6rem;
   --default-font-size-h2: 3.75rem;
   --default-font-size-h3: 3rem;
@@ -26,14 +33,62 @@
   --default-font-size-h5: 1.5rem;
   --default-font-size-h6: 1.25rem;
   --default-font-size-paragraph: 1rem;
-  /* Font Weight -------------------------------------------------------------------------*/
+
+  /* Weight */
   --black-font-weight-heading: 949;
   --medium-font-weight-heading: 500;
+
   /* Animation ---------------------------------------------------------------------------*/
   --default-transition-duration: 0.3s;
   --default-transition-timing-function: ease-in-out;
   --fast-transition-duration: 0.1s;
   --default-transition: var(--default-transition-duration)
     var(--default-transition-timing-function);
-  --fast-transition: var(--fast-transition-duration) var(--default-transition-timing-function);
+  --fast-transition: var(--fast-transition-duration)
+    var(--default-transition-timing-function);
+
+  /* Sizes -------------------------------------------------------------------------------*/
+  --icon-size: 15px;
+  --button-height: 40px;
+  --button-width-square: var(--button-height);
+  --button-width-long: 155px;
+
+  /* Layout ------------------------------------------------------------------------------*/
+  --layout-small: 15px;
+  --layout-medium: 25px;
+  --layout-large: calc(var(--layout-medium) * 2);
+  --layout-extra-large: calc(var(--layout-large) + var(--layout-medium));
+
+  --border-radius-extra-small: 3px;
+  --border-radius-small: 10px;
+  --border-radius-medium: 15px;
+  --border-radius-large: 25px;
+  --border-radius-extra-large: 40px;
+}
+
+/* Breakpoints for mobile,tablet & desktop -----------------------------------------------*/
+
+/* 0 to large phone */
+@media only screen and (max-width: 600px) {
+}
+
+/* large phone to tablet portrait */
+@media only screen and (max-width: 768px) {
+  .tablet {
+    display: none;
+  }
+}
+
+/* tablet portrait to laptop */
+@media only screen and (max-width: 1200px) {
+  .desktop {
+    display: none !important;
+  }
+}
+
+/* laptop and bigger */
+@media only screen and (min-width: 1200px) {
+  .mobile {
+    display: none !important;
+  }
 }

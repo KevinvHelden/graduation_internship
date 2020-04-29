@@ -1,5 +1,10 @@
 @import "../../../styling/styling.css";
 
+:root {
+    --searchbar-width: 300px;
+    --searchbar-width-extended: 400px;
+}
+
 .root{
     height: 50px;
     width: auto;
@@ -18,33 +23,33 @@
 
 .inner {
     height: 100%;
-    border: 1px var(--grey5) solid;
-    border-radius: 25px;
+    border: 1px var(--border-inactive) solid;
+    border-radius: var(--border-radius-large);
     color: var(--black);
     font-family: var(--default-font-paragraph);
     font-size: var(--default-font-size-paragraph);
-    width: 300px;
+    width: var(--searchbar-width);
     padding: 0 50px 0 55px;
     background-image: url("../../../images/icons/magnifyingGlass.svg");
     background-repeat: no-repeat;
-    background-position: 25px center;
+    background-position: var(--border-radius-large) center;
     outline: none;
     transition: var(--default-transition);
     transform-origin: right;
 }
 
 .inner:hover {
-    border: 1px var(--primary) solid;
+    border: 1px var(--border-active) solid;
 }
 
 .inner:focus {
-    border: 1px var(--primary) solid;
-    width: 400px;
+    border: 1px var(--border-active) solid;
+    width: var(--searchbar-width-extended);
 }
 
 .inner:not(:placeholder-shown) {
-    border: 1px var(--primary) solid;
-    width: 400px;
+    border: 1px var(--border-active) solid;
+    width: var(--searchbar-width-extended);
 }
 
 .inner::placeholder {

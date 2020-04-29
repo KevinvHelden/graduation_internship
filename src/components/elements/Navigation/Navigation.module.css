@@ -1,39 +1,39 @@
 @import "../../../styling/styling.css";
 
 .root {
-    height: 100vh;
-    width: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 75px 50px;
+  height: calc(100vh - calc(var(--layout-medium) * 2));
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: var(--layout-large) var(--layout-medium);
 }
 
 .root p {
-    color: var(--grey1);
+  color: var(--grey1);
 }
 
 .root .user {
-    margin-bottom: 75px;
-    width: auto;
-    height: auto;
-    max-width: 300px;
-    overflow: hidden;
+  margin-bottom: var(--layout-extra-large);
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  overflow: hidden;
 }
 
 .root .user .profilePicture {
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  margin-bottom: var(--layout-small);
 }
 
-.root .pageLinks h5  {
-    color: var(--grey1);
-    margin-bottom: 25px;
+.root .pageLinks h5 {
+  color: var(--grey1);
+  margin-bottom: var(--layout-medium);
 }
 
 .root button {
-    margin-top: auto;
+  margin-top: auto;
 }

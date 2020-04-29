@@ -1,12 +1,15 @@
 @import "../../../styling/styling.css";
 
+:root {
+  --checkbox-active-background: var(--border-active);
+}
+
 /* The container */
 .root {
     display: block;
     position: relative;
     cursor: pointer;
     margin: calc(calc(50px - 15px) / 2);
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -28,20 +31,20 @@
     height: 15px;
     width: 15px;
     display: block;
-    border-radius: 3px;
+    border-radius: var(--border-radius-extra-small);
     background-color: var(--white);
-    border: 1px var(--grey4) solid;
+    border: 1px var(--border-inactive) solid;
     transition: var(--fast-transition);
   }
   
   /* On mouse-over, add a grey background color */
   .root:hover input ~ .checkmark {
-    border: 1px var(--primary) solid;
+    border: 1px var(--border-active) solid;
   }
   
   /* When the checkbox is checked, add a blue background */
   .root input:checked ~ .checkmark {
-    background-color: var(--primary);
+    background-color: var(--checkbox-active-background);
     border: none;
   }
   

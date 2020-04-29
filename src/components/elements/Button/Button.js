@@ -16,6 +16,10 @@ class Button extends PureComponent {
      */
     text: PropTypes.node,
     /**
+     * The content in the button
+     */
+    rounded: PropTypes.bool,
+    /**
      * The selected variant of the button
      */
     variant: PropTypes.oneOf([
@@ -38,10 +42,11 @@ class Button extends PureComponent {
   static defaultProps = {
     text: "Button",
     variant: "primary",
+    rounded: true,
   };
 
   render() {
-    const { text, variant, disabled, iconBefore, iconAfter } = this.props;
+    const { text, variant, disabled, rounded, iconBefore, iconAfter } = this.props;
 
     return (
       <button
@@ -52,12 +57,15 @@ class Button extends PureComponent {
           { [styles.success]: variant === "success" },
           { [styles.destructive]: variant === "destructive" },
           { [styles.ghost]: variant === "ghost" },
+          { [styles.rounded]: rounded },
           { [styles.hasIcon]: iconBefore || iconAfter }
         )}
         disabled={disabled}
       >
         {iconBefore && <Icon icon={iconBefore} />}
-        <Text text={text} align={"center"} light strong />
+        <div className={classnames(styles.textContainer)}>
+          <Text text={text} align={"center"} light strong />
+        </div>
         {iconAfter && <Icon icon={iconAfter} />}
       </button>
     );

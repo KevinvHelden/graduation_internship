@@ -26,11 +26,14 @@ class Editbar extends PureComponent {
   render() {
     const { selected } = this.props;
     const numberOfSelected = selected.length;
+    const anythingSelected = numberOfSelected > 0;
+    const oneSelected = numberOfSelected === 1;
+    const multipleSelected = numberOfSelected > 1;
 
     return (
       <div
         className={classnames(styles.root, {
-          [styles.visible]: numberOfSelected > 0,
+          [styles.visible]: anythingSelected,
         })}
       >
         <div className={classnames(styles.selected)}>
@@ -38,16 +41,16 @@ class Editbar extends PureComponent {
             <Text text={numberOfSelected} light strong />
           </div>
           <Text
-            text={numberOfSelected !== 1 ? "items selected" : "item selected"}
+            text={!oneSelected ? "items selected" : "item selected"}
             light
             strong
           />
         </div>
         <div className={classnames(styles.actions)}>
-          <Button text={"View article"} disabled={numberOfSelected > 1} iconBefore={"view"} />
+          <Button text={"View article"} disabled={multipleSelected} iconBefore={"view"} />
           <Button
             text={"Edit article"}
-            disabled={numberOfSelected > 1}
+            disabled={multipleSelected}
             variant={"secondary"}
             iconBefore={"edit"}
           />

@@ -1,8 +1,8 @@
 @import "../../../styling/styling.css";
 
 .root {
-    width: 15px;
-    height: 15px;
+    width: var(--icon-size);
+    height: var(--icon-size);
     display: flex;
     justify-content: center;
 }

@@ -41,7 +41,7 @@ class Navigation extends PureComponent {
     };
 
     return (
-      <div className={classnames(styles.root)}>
+      <div className={classnames(styles.root, "desktop")}>
         <div className={classnames(styles.user)}>
           <div className={classnames(styles.profilePicture)}>
             <img src={mockupProfile} alt={"profile"} />
