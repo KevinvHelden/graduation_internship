@@ -74,8 +74,12 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .root .tableHeaderItems > :first-child {
+    width: 70%;
+  }
+
   .root .tableHeaderItems > * {
-    width: 50%;
+    width: 30%;
   }
 }
 

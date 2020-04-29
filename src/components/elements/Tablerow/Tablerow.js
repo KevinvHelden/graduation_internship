@@ -71,6 +71,32 @@ class Tablerow extends PureComponent {
     }
   }
 
+  //Determines how many items should be shown after the row title
+  formatData = (data) => {
+    //Width of the screen
+    const screenWidth = window.innerWidth;
+    //How big the return array should be
+    let size = 0;
+    //This array will return all formatted items
+    let returnArray = [];
+    //laptop size, show first 3 items
+    if (screenWidth >= 1200) {
+      size = 3;
+      returnArray = data && data.slice(0, size);
+      return returnArray
+    } 
+    //tablet size, show just first item
+    else if (screenWidth >= 768) {
+      size = 1;
+      returnArray = data && data.slice(0, size);
+      return returnArray
+    } 
+    //phone size, show no items
+    else if (screenWidth < 768) {
+      return
+    }
+  };
+
   //Selects or deselects this component
   selectFunction = () => {
     const { selected } = this.state;
@@ -82,13 +108,14 @@ class Tablerow extends PureComponent {
     const { clickFunc, data } = this.props;
     const { selected } = this.state;
     //Checks if there is a click function from parent before executing it
-    clickFunc && clickFunc( data.id, selected );
+    clickFunc && clickFunc(data.id, selected);
     //Selects or deselects this component
     this.selectFunction();
   };
 
   handleTablerowItems = (data) => {
-    const returnData = data.map((dataItem, id) => (
+    const formattedData = this.formatData(data);
+    const returnData = formattedData && formattedData.map((dataItem, id) => (
       <div key={id} className={classnames(styles.tablerowItemContainer)}>
         <Text text={dataItem} key={id} />
       </div>
