@@ -12,11 +12,6 @@
   display: flex;
 }
 
-.root:hover {
-  background-color: var(--tablerow-selected);
-  cursor: pointer;
-}
-
 .root.divider {
   border-bottom: 1px var(--border-inactive) solid;
 }
@@ -33,7 +28,7 @@
   width: 100%;
   display: grid;
   white-space: nowrap;
-  padding-right: var(--layout-medium);
+  padding-right: var(--layout-extra-small);
 }
 
 .tablerowItems {
@@ -53,12 +48,18 @@
 
   .root .tablerowItemContainer {
     width: 30%;
+    padding-right: var(--layout-medium);
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .root .tablerowItems > :first-child {
     width: 50%;
+  }
+
+  .root:hover {
+    background-color: var(--tablerow-selected);
+    cursor: pointer;
   }
   
   .root .tablerowItemContainer {

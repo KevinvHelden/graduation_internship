@@ -5,6 +5,9 @@
     height: auto;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
 }
 
 .root .tableHeader {
@@ -44,12 +47,24 @@
     width: auto;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .root .actions > * {
-    margin-right: 30px;
+    margin-right: var(--layout-small);
 }
 
 .root .table {
     margin-top: 25px;
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .root .actions > .searchbar {
+        margin-top: var(--layout-medium);
+        margin-right: 0;
+        width: 100%;
+    }
 }

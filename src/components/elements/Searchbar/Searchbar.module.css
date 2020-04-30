@@ -1,61 +1,84 @@
 @import "../../../styling/styling.css";
 
 :root {
-    --searchbar-width: 300px;
-    --searchbar-width-extended: 400px;
+  --searchbar-width: 300px;
+  --searchbar-width-extended: 400px;
 }
 
-.root{
-    height: 50px;
-    width: auto;
-    outline: none;
-    display: flex;
+.root {
+  height: 50px;
+  width: auto;
+  outline: none;
+  display: flex;
+  width: 100%;
 }
 
 .root div {
-    position: absolute;
-    margin: 17.5px 0 17.5px 360px;
-}
-
-.root div:hover {
-    cursor: pointer;
+  position: absolute;
+  margin: 17.5px 0 17.5px
+    calc(100% - calc(var(--icon-size) + var(--border-radius-large)));
 }
 
 .inner {
-    height: 100%;
-    border: 1px var(--border-inactive) solid;
-    border-radius: var(--border-radius-large);
-    color: var(--black);
-    font-family: var(--default-font-paragraph);
-    font-size: var(--default-font-size-paragraph);
-    width: var(--searchbar-width);
-    padding: 0 50px 0 55px;
-    background-image: url("../../../images/icons/magnifyingGlass.svg");
-    background-repeat: no-repeat;
-    background-position: var(--border-radius-large) center;
-    outline: none;
-    transition: var(--default-transition);
-    transform-origin: right;
-}
-
-.inner:hover {
-    border: 1px var(--border-active) solid;
+  height: 100%;
+  border: 1px var(--border-inactive) solid;
+  border-radius: var(--border-radius-large);
+  color: var(--black);
+  width: 100%;
+  font-family: var(--default-font-paragraph);
+  font-size: var(--default-font-size-paragraph);
+  padding: 0 50px 0 55px;
+  background-image: url("../../../images/icons/magnifyingGlass.svg");
+  background-repeat: no-repeat;
+  background-position: var(--border-radius-large) center;
+  outline: none;
+  transition: var(--default-transition);
+  transform-origin: right;
 }
 
 .inner:focus {
-    border: 1px var(--border-active) solid;
-    width: var(--searchbar-width-extended);
+  border: 1px var(--border-active) solid;
 }
 
 .inner:not(:placeholder-shown) {
-    border: 1px var(--border-active) solid;
-    width: var(--searchbar-width-extended);
+  border: 1px var(--border-active) solid;
 }
 
 .inner::placeholder {
-    color: var(--grey1);
+  color: var(--grey1);
 }
 
 .deleteIcon {
-    top: -50px;
+  top: -50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    width: auto;
+  }
+
+  .inner {
+    width: var(--searchbar-width);
+  }
+
+  .inner:hover {
+    border: 1px var(--border-active) solid;
+  }
+
+  .inner:focus {
+    width: var(--searchbar-width-extended);
+  }
+
+  .inner:not(:placeholder-shown) {
+    width: var(--searchbar-width-extended);
+  }
+
+  .root div {
+    position: absolute;
+    margin: 17.5px 0 17.5px 360px;
+  }
+
+  .root div:hover {
+    cursor: pointer;
+  }
 }

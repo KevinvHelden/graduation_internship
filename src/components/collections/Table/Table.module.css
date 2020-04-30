@@ -1,15 +1,38 @@
 @import "../../../styling/styling.css";
 
 :root {
-  --container-padding: 50px;
+  /* all other items and margins inside the container */
+  --height-pageTitle: 70px;
+  --height-tableHeader: 50px;
+  --inside-margins: calc(var(--layout-medium) * 2);
   --height-actions: 50px;
-  --height-container: calc(calc(100vh - 50px) - var(--container-padding));
+  --content-above-tableContent: calc(
+    var(--height-tableHeader) +
+      calc(
+        var(--inside-margins) +
+          calc(var(--height-actions) + var(--height-pageTitle))
+      )
+  );
+
+  /* the inside of the container */
+  --container-padding-large: calc(var(--layout-large) * 2);
+  --height-container: calc(
+    calc(100vh - calc(var(--layout-medium) * 2)) -
+      var(--container-padding-large)
+  );
+  --container-padding-small: calc(var(--layout-medium) * 2);
+  --height-container-mobile: calc(100vh - var(--container-padding-small));
+
+  /* scrollbar */
   --scrollbar-width: 4px;
 }
 
 .root {
   width: 100%;
-  height: 100%;
+  height: 300px;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
 }
 
 .root .tableHeader {
@@ -37,9 +60,12 @@
 }
 
 .root .tableContent {
-  overflow: scroll;
+  overflow-y: scroll;
   width: 100%;
-  height: calc(calc(var(--height-container) - var(--height-actions)) - 225px);
+  /* height: calc(var(--height-container-mobile) - var(--content-above-tableContent)); */
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
 }
 
 .root .tableContent > :last-child {
@@ -69,11 +95,11 @@
   background: var(--darkBlue);
 }
 
-.root .tableContent {
-  overflow-x: hidden;
-}
-
 @media only screen and (min-width: 768px) {
+  .root .tableContent {
+    height: calc(var(--height-container) - var(--content-above-tableContent));
+  }
+
   .root .tableHeaderItems > :first-child {
     width: 70%;
   }
@@ -87,9 +113,8 @@
   .root .tableHeaderItems > :first-child {
     width: 50%;
   }
-  
+
   .root .tableHeaderItems > * {
     width: calc(50% / 3);
   }
 }
-
