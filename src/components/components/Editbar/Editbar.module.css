@@ -3,35 +3,35 @@
 :root {
   --editbar-height: 80px;
   --editbar-width: 800px;
+  --editbar-width-mobile: 100px;
+  --editbar-height-mobile: 276px;
 }
 
 .root {
   position: fixed;
   top: 100vh;
-  left: calc(calc(50% + 130px) - 400px);
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  width: var(--editbar-width);
-  height: 80px;
+  width: var(--editbar-width-mobile);
+  height: var(--editbar-height-mobile);
   display: flex;
-  flex-direction: row;
-  border-radius: var(--border-radius-extra-large);
-  padding: 0 30px;
+  flex-direction: column;
+  border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
   z-index: 1;
+  padding-top: var(--layout-medium);
   align-items: center;
   transition: var(--default-transition);
 }
 
 .root.visible {
-  top: calc(
-    100vh -
-      calc(var(--editbar-height) + var(--layout-medium) + var(--layout-large))
-  );
+  top: calc(100vh - var(--editbar-height-mobile));
 }
 
 .root .selected {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -44,15 +44,68 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius-large);
-  margin-right: var(--layout-small);
+  margin: auto;
+}
+
+.root .selected .selectedCounter {
+  display: none;
 }
 
 .root .actions {
-  margin-left: auto;
+  margin: var(--layout-small) auto 0;
   width: auto;
   display: flex;
+  flex-direction: column;
 }
 
 .root .actions button {
-  margin-left: var(--layout-medium);
+  margin-bottom: var(--layout-small);
 }
+
+@media only screen and (min-width: 768px) {
+  .root {
+    width: var(--editbar-width);
+    height: var(--editbar-height);
+    border-radius: var(--border-radius-extra-large);
+    left: calc(50% - 400px);
+    flex-direction: row;
+    padding: 0 30px;
+  }
+
+  .root.visible {
+    top: calc(
+      100vh -
+        calc(var(--editbar-height) + var(--layout-medium) + var(--layout-large))
+    );
+  }
+
+  .root .selected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .root .selected .selectedContainer {
+    margin-right: var(--layout-small);
+  }
+
+  .root .selected .selectedCounter {
+    display: block;
+  }
+
+  .root .actions {
+    flex-direction: row;
+    margin-left: auto;
+  }
+
+  .root .actions button {
+    margin-left: var(--layout-medium);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    left: calc(calc(50% + 130px) - 400px);
+  }
+}
+

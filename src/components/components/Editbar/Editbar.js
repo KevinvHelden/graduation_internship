@@ -40,21 +40,31 @@ class Editbar extends PureComponent {
           <div className={classnames(styles.selectedContainer)}>
             <Text text={numberOfSelected} light strong />
           </div>
-          <Text
-            text={!oneSelected ? "items selected" : "item selected"}
-            light
-            strong
-          />
+          <div className={classnames(styles.selectedCounter)}>
+            <Text
+              text={!oneSelected ? "items selected" : "item selected"}
+              light
+              strong
+            />
+          </div>
         </div>
         <div className={classnames(styles.actions)}>
-          <Button text={"View article"} disabled={multipleSelected} iconBefore={"view"} />
+          <Button
+            text={"View article"}
+            disabled={multipleSelected}
+            iconBefore={"view"}
+          />
           <Button
             text={"Edit article"}
             disabled={multipleSelected}
             variant={"secondary"}
             iconBefore={"edit"}
           />
-          <Button text={"Delete"} variant={"destructive"} iconBefore={"delete"} />
+          <Button
+            text={"Delete"}
+            variant={"destructive"}
+            iconBefore={"delete"}
+          />
         </div>
       </div>
     );

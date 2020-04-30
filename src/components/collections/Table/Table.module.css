@@ -1,28 +1,6 @@
 @import "../../../styling/styling.css";
 
 :root {
-  /* all other items and margins inside the container */
-  --height-pageTitle: 70px;
-  --height-tableHeader: 50px;
-  --inside-margins: calc(var(--layout-medium) * 2);
-  --height-actions: 50px;
-  --content-above-tableContent: calc(
-    var(--height-tableHeader) +
-      calc(
-        var(--inside-margins) +
-          calc(var(--height-actions) + var(--height-pageTitle))
-      )
-  );
-
-  /* the inside of the container */
-  --container-padding-large: calc(var(--layout-large) * 2);
-  --height-container: calc(
-    calc(100vh - calc(var(--layout-medium) * 2)) -
-      var(--container-padding-large)
-  );
-  --container-padding-small: calc(var(--layout-medium) * 2);
-  --height-container-mobile: calc(100vh - var(--container-padding-small));
-
   /* scrollbar */
   --scrollbar-width: 4px;
 }

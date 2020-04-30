@@ -55,7 +55,7 @@
 }
 
 .root .table {
-    margin-top: 25px;
+    margin-top: var(--layout-medium);
     display: flex;
     flex-flow: column;
     flex-grow: 1;
