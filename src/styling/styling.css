@@ -51,7 +51,7 @@
   --icon-size: 15px;
   --button-height: 40px;
   --button-width-square: var(--button-height);
-  --button-width-long: 155px;
+  --button-width-long: 150px;
 
   /* Layout ------------------------------------------------------------------------------*/
   --layout-small: 15px;
@@ -64,31 +64,4 @@
   --border-radius-medium: 15px;
   --border-radius-large: 25px;
   --border-radius-extra-large: 40px;
-}
-
-/* Breakpoints for mobile,tablet & desktop -----------------------------------------------*/
-
-/* 0 to large phone */
-@media only screen and (max-width: 600px) {
-}
-
-/* large phone to tablet portrait */
-@media only screen and (max-width: 768px) {
-  .tablet {
-    display: none;
-  }
-}
-
-/* tablet portrait to laptop */
-@media only screen and (max-width: 1200px) {
-  .desktop {
-    display: none !important;
-  }
-}
-
-/* laptop and bigger */
-@media only screen and (min-width: 1200px) {
-  .mobile {
-    display: none !important;
-  }
 }

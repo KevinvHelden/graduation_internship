@@ -20,6 +20,10 @@ class Button extends PureComponent {
      */
     rounded: PropTypes.bool,
     /**
+     * The button will be a small square with just the icon inside
+     */
+    square: PropTypes.bool,
+    /**
      * The selected variant of the button
      */
     variant: PropTypes.oneOf([
@@ -43,10 +47,11 @@ class Button extends PureComponent {
     text: "Button",
     variant: "primary",
     rounded: true,
+    square: false,
   };
 
   render() {
-    const { text, variant, disabled, rounded, iconBefore, iconAfter } = this.props;
+    const { text, variant, disabled, rounded, square, iconBefore, iconAfter } = this.props;
 
     return (
       <button
@@ -58,6 +63,7 @@ class Button extends PureComponent {
           { [styles.destructive]: variant === "destructive" },
           { [styles.ghost]: variant === "ghost" },
           { [styles.rounded]: rounded },
+          { [styles.square]: square },
           { [styles.hasIcon]: iconBefore || iconAfter }
         )}
         disabled={disabled}

@@ -1,7 +1,7 @@
 @import "../../../styling/styling.css";
 
 .root {
-  width: var(--button-width-square);
+  width: var(--button-width-long);
   height: var(--button-height);
   color: white;
   outline: none;
@@ -13,12 +13,25 @@
   flex-shrink: 0;
 }
 
-.root.rounded {
-  border-radius: var(--border-radius-small);
+.root.square {
+  width: var(--button-width-square);
+  border-radius: var(--border-radius-small) !important;
 }
 
-.root .textContainer {
+.root.square .textContainer {
   display: none;
+}
+
+.root.hasIcon.square > :first-child {
+  margin: 0;
+}
+
+.root.rounded {
+  border-radius: var(--border-radius-large);
+}
+
+.root.hasIcon > :first-child {
+  margin-right: 10px;
 }
 
 .root:hover {
@@ -60,16 +73,8 @@
     width: var(--button-width-long);
   }
 
-  .root.rounded {
-    border-radius: var(--border-radius-large);
-  }
-
   .root .textContainer {
     display: block;
-  }
-
-  .root.hasIcon > :first-child {
-    margin-right: 10px;
   }
 }
 

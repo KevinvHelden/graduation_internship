@@ -3,10 +3,12 @@
 .root {
   height: calc(100vh - calc(var(--layout-medium) * 2));
   width: 300px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   flex-direction: column;
   padding: var(--layout-large) var(--layout-medium);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
 }
 
 .root p {
@@ -36,4 +38,10 @@
 
 .root button {
   margin-top: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    display: flex;
+  }
 }

@@ -23,12 +23,27 @@ class Editbar extends PureComponent {
     selected: [],
   };
 
+  //checks if the buttons should be squared or not
+  checkScreenWidth = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth && screenWidth > 768) {
+      console.log(false)
+      return false;
+    } else {
+      console.log(screenWidth)
+      return true;
+    }
+  };
+
   render() {
+    const { checkScreenWidth } = this;
     const { selected } = this.props;
     const numberOfSelected = selected.length;
     const anythingSelected = numberOfSelected > 0;
     const oneSelected = numberOfSelected === 1;
     const multipleSelected = numberOfSelected > 1;
+
+    checkScreenWidth();
 
     return (
       <div
@@ -50,17 +65,20 @@ class Editbar extends PureComponent {
         </div>
         <div className={classnames(styles.actions)}>
           <Button
+            square={checkScreenWidth()}
             text={"View article"}
             disabled={multipleSelected}
             iconBefore={"view"}
           />
           <Button
+            square={checkScreenWidth()}
             text={"Edit article"}
             disabled={multipleSelected}
             variant={"secondary"}
             iconBefore={"edit"}
           />
           <Button
+            square={checkScreenWidth()}
             text={"Delete"}
             variant={"destructive"}
             iconBefore={"delete"}

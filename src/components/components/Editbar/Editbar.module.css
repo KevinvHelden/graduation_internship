@@ -12,7 +12,7 @@
   top: 100vh;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   width: var(--editbar-width-mobile);
   height: var(--editbar-height-mobile);
@@ -95,11 +95,12 @@
 
   .root .actions {
     flex-direction: row;
-    margin-left: auto;
+    margin: auto 0 auto auto;
   }
 
   .root .actions button {
     margin-left: var(--layout-medium);
+    margin-bottom: 0;
   }
 }
 

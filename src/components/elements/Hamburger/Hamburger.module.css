@@ -1,0 +1,1001 @@
+@import "../../../styling/styling.css";
+
+.root {
+  top: var(--layout-medium);
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition: var(--default-transition);
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+  position: absolute;
+  outline: none;
+}
+.root:hover {
+  opacity: 0.7;
+}
+.root.active:hover {
+  opacity: 0.7;
+}
+.root.darkActive.active .inner,
+.root.darkActive.active .inner::before,
+.root.darkActive.active .inner::after {
+  background-color: var(--black);
+}
+
+.root.lightActive.active .inner,
+.root.lightActive.active .inner::before,
+.root.lightActive.active .inner::after {
+  background-color: var(--white);
+}
+
+.root.left {
+  left: var(--layout-medium);
+}
+
+.root.right {
+  right: var(--layout-medium);
+}
+
+.box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+.inner,
+.inner::before,
+.inner::after {
+  width: 40px;
+  height: 4px;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.root.darkInactive .inner,
+.root.darkInactive .inner::before,
+.root.darkInactive .inner::after {
+  background-color: var(--black);
+}
+
+.root.lightInactive .inner,
+.root.lightInactive .inner::before,
+.root.lightInactive .inner::after {
+  background-color: var(--white);
+}
+
+.inner::before,
+.inner::after {
+  content: "";
+  display: block;
+}
+.inner::before {
+  top: -10px;
+}
+.inner::after {
+  bottom: -10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    top: calc(var(--layout-large) + var(--layout-medium));
+  }
+
+  .root.left {
+    left: calc(var(--layout-large) + var(--layout-medium));
+  }
+  
+  .root.right {
+    right: calc(var(--layout-large) + var(--layout-medium));
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    display: none;
+  }
+}
+
+/*
+     * 3DX
+     */
+.h_3dx .box {
+  perspective: 80px;
+}
+
+.h_3dx .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dx .inner::before,
+.h_3dx .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dx.active .inner {
+  background-color: transparent !important;
+  transform: rotateY(180deg);
+}
+.h_3dx.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dx.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * 3DX Reverse
+     */
+.h_3dx_r .box {
+  perspective: 80px;
+}
+
+.h_3dx_r .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dx_r .inner::before,
+.h_3dx_r .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dx_r.active .inner {
+  background-color: transparent !important;
+  transform: rotateY(-180deg);
+}
+.h_3dx_r.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dx_r.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * 3DY
+     */
+.h_3dy .box {
+  perspective: 80px;
+}
+
+.h_3dy .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dy .inner::before,
+.h_3dy .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dy.active .inner {
+  background-color: transparent !important;
+  transform: rotateX(-180deg);
+}
+.h_3dy.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dy.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * 3DY Reverse
+     */
+.h_3dy_r .box {
+  perspective: 80px;
+}
+
+.h_3dy_r .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dy_r .inner::before,
+.h_3dy_r .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dy_r.active .inner {
+  background-color: transparent !important;
+  transform: rotateX(180deg);
+}
+.h_3dy_r.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dy_r.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * 3DXY
+     */
+.h_3dxy .box {
+  perspective: 80px;
+}
+
+.h_3dxy .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dxy .inner::before,
+.h_3dxy .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dxy.active .inner {
+  background-color: transparent !important;
+  transform: rotateX(180deg) rotateY(180deg);
+}
+.h_3dxy.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dxy.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * 3DXY Reverse
+     */
+.h_3dxy_r .box {
+  perspective: 80px;
+}
+
+.h_3dxy_r .inner {
+  transition: transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.h_3dxy_r .inner::before,
+.h_3dxy_r .inner::after {
+  transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.h_3dxy_r.active .inner {
+  background-color: transparent !important;
+  transform: rotateX(180deg) rotateY(180deg) rotateZ(-180deg);
+}
+.h_3dxy_r.active .inner::before {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.h_3dxy_r.active .inner::after {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+}
+
+/*
+     * Arrow
+     */
+.arrow.active .inner::before {
+  transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+.arrow.active .inner::after {
+  transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+
+/*
+     * Arrow Right
+     */
+.arrow_r.active .inner::before {
+  transform: translate3d(8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+
+.arrow_r.active .inner::after {
+  transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+/*
+     * Arrow Alt
+     */
+.arrowalt .inner::before {
+  transition: top 0.1s 0.1s ease,
+    transform 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.arrowalt .inner::after {
+  transition: bottom 0.1s 0.1s ease,
+    transform 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.arrowalt.active .inner::before {
+  top: 0;
+  transform: translate3d(-8px, -10px, 0) rotate(-45deg) scale(0.7, 1);
+  transition: top 0.1s ease,
+    transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+.arrowalt.active .inner::after {
+  bottom: 0;
+  transform: translate3d(-8px, 10px, 0) rotate(45deg) scale(0.7, 1);
+  transition: bottom 0.1s ease,
+    transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+/*
+     * Arrow Alt Right
+     */
+.arrowalt_r .inner::before {
+  transition: top 0.1s 0.1s ease,
+    transform 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.arrowalt_r .inner::after {
+  transition: bottom 0.1s 0.1s ease,
+    transform 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.arrowalt_r.active .inner::before {
+  top: 0;
+  transform: translate3d(8px, -10px, 0) rotate(45deg) scale(0.7, 1);
+  transition: top 0.1s ease,
+    transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+.arrowalt_r.active .inner::after {
+  bottom: 0;
+  transform: translate3d(8px, 10px, 0) rotate(-45deg) scale(0.7, 1);
+  transition: bottom 0.1s ease,
+    transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+/*
+     * Arrow Turn
+     */
+.arrowturn.active .inner {
+  transform: rotate(-180deg);
+}
+.arrowturn.active .inner::before {
+  transform: translate3d(8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+.arrowturn.active .inner::after {
+  transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+/*
+     * Arrow Turn Right
+     */
+.arrowturn_r.active .inner {
+  transform: rotate(-180deg);
+}
+.arrowturn_r.active .inner::before {
+  transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+.arrowturn_r.active .inner::after {
+  transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+
+/*
+     * Boring
+     */
+.boring .inner,
+.boring .inner::before,
+.boring .inner::after {
+  transition-property: none;
+}
+
+.boring.active .inner {
+  transform: rotate(45deg);
+}
+.boring.active .inner::before {
+  top: 0;
+  opacity: 0;
+}
+.boring.active .inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+}
+
+/*
+     * Collapse
+     */
+.collapse .inner {
+  top: auto;
+  bottom: 0;
+  transition-duration: 0.13s;
+  transition-delay: 0.13s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.collapse .inner::after {
+  top: -20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    opacity 0.1s linear;
+}
+.collapse .inner::before {
+  transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.collapse.active .inner {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+  transition-delay: 0.22s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.collapse.active .inner::after {
+  top: 0;
+  opacity: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    opacity 0.1s 0.22s linear;
+}
+.collapse.active .inner::before {
+  top: 0;
+  transform: rotate(-90deg);
+  transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Collapse Reverse
+     */
+.collapse_r .inner {
+  top: auto;
+  bottom: 0;
+  transition-duration: 0.13s;
+  transition-delay: 0.13s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.collapse_r .inner::after {
+  top: -20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    opacity 0.1s linear;
+}
+.collapse_r .inner::before {
+  transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.collapse_r.active .inner {
+  transform: translate3d(0, -10px, 0) rotate(45deg);
+  transition-delay: 0.22s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.collapse_r.active .inner::after {
+  top: 0;
+  opacity: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    opacity 0.1s 0.22s linear;
+}
+.collapse_r.active .inner::before {
+  top: 0;
+  transform: rotate(90deg);
+  transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Elastic
+     */
+.elastic .inner {
+  top: 2px;
+  transition-duration: 0.275s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.elastic .inner::before {
+  top: 10px;
+  transition: opacity 0.125s 0.275s ease;
+}
+.elastic .inner::after {
+  top: 20px;
+  transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.elastic.active .inner {
+  transform: translate3d(0, 10px, 0) rotate(135deg);
+  transition-delay: 0.075s;
+}
+.elastic.active .inner::before {
+  transition-delay: 0s;
+  opacity: 0;
+}
+.elastic.active .inner::after {
+  transform: translate3d(0, -20px, 0) rotate(-270deg);
+  transition-delay: 0.075s;
+}
+
+/*
+     * Elastic Reverse
+     */
+.elastic_r .inner {
+  top: 2px;
+  transition-duration: 0.275s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.elastic_r .inner::before {
+  top: 10px;
+  transition: opacity 0.125s 0.275s ease;
+}
+.elastic_r .inner::after {
+  top: 20px;
+  transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.elastic_r.active .inner {
+  transform: translate3d(0, 10px, 0) rotate(-135deg);
+  transition-delay: 0.075s;
+}
+.elastic_r.active .inner::before {
+  transition-delay: 0s;
+  opacity: 0;
+}
+.elastic_r.active .inner::after {
+  transform: translate3d(0, -20px, 0) rotate(270deg);
+  transition-delay: 0.075s;
+}
+
+/*
+     * Emphatic
+     */
+.emphatic {
+  overflow: hidden;
+}
+.emphatic .inner {
+  transition: background-color 0.125s 0.175s ease-in;
+}
+.emphatic .inner::before {
+  left: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, left 0.125s 0.175s ease-in;
+}
+.emphatic .inner::after {
+  top: 10px;
+  right: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, right 0.125s 0.175s ease-in;
+}
+.emphatic.active .inner {
+  transition-delay: 0s;
+  transition-timing-function: ease-out;
+  background-color: transparent !important;
+}
+.emphatic.active .inner::before {
+  left: -80px;
+  top: -80px;
+  transform: translate3d(80px, 80px, 0) rotate(45deg);
+  transition: left 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.emphatic.active .inner::after {
+  right: -80px;
+  top: -80px;
+  transform: translate3d(-80px, 80px, 0) rotate(-45deg);
+  transition: right 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/*
+     * Emphatic Reverse
+     */
+.emphatic_r {
+  overflow: hidden;
+}
+.emphatic_r .inner {
+  transition: background-color 0.125s 0.175s ease-in;
+}
+.emphatic_r .inner::before {
+  left: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, left 0.125s 0.175s ease-in;
+}
+.emphatic_r .inner::after {
+  top: 10px;
+  right: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, right 0.125s 0.175s ease-in;
+}
+.emphatic_r.active .inner {
+  transition-delay: 0s;
+  transition-timing-function: ease-out;
+  background-color: transparent !important;
+}
+.emphatic_r.active .inner::before {
+  left: -80px;
+  top: 80px;
+  transform: translate3d(80px, -80px, 0) rotate(-45deg);
+  transition: left 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.emphatic_r.active .inner::after {
+  right: -80px;
+  top: 80px;
+  transform: translate3d(-80px, -80px, 0) rotate(45deg);
+  transition: right 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/*
+     * Minus
+     */
+.minus .inner::before,
+.minus .inner::after {
+  transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out, opacity 0s linear;
+}
+
+.minus.active .inner::before,
+.minus.active .inner::after {
+  opacity: 0;
+  transition: bottom 0.08s ease-out, top 0.08s ease-out, opacity 0s 0.08s linear;
+}
+
+.minus.active .inner::before {
+  top: 0;
+}
+
+.minus.active .inner::after {
+  bottom: 0;
+}
+
+/*
+     * Slider
+     */
+.slider .inner {
+  top: 2px;
+}
+.slider .inner::before {
+  top: 10px;
+  transition-property: transform, opacity;
+  transition-timing-function: ease;
+  transition-duration: 0.15s;
+}
+.slider .inner::after {
+  top: 20px;
+}
+
+.slider.active .inner {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.slider.active .inner::before {
+  transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+  opacity: 0;
+}
+.slider.active .inner::after {
+  transform: translate3d(0, -20px, 0) rotate(-90deg);
+}
+
+/*
+     * Slider Reverse
+     */
+.slider_r .inner {
+  top: 2px;
+}
+.slider_r .inner::before {
+  top: 10px;
+  transition-property: transform, opacity;
+  transition-timing-function: ease;
+  transition-duration: 0.15s;
+}
+.slider_r .inner::after {
+  top: 20px;
+}
+
+.slider_r.active .inner {
+  transform: translate3d(0, 10px, 0) rotate(-45deg);
+}
+.slider_r.active .inner::before {
+  transform: rotate(45deg) translate3d(5.71429px, -6px, 0);
+  opacity: 0;
+}
+.slider_r.active .inner::after {
+  transform: translate3d(0, -20px, 0) rotate(90deg);
+}
+
+/*
+     * Spin
+     */
+.spin .inner {
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.spin .inner::before {
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+.spin .inner::after {
+  transition: bottom 0.1s 0.25s ease-in,
+    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.spin.active .inner {
+  transform: rotate(225deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.spin.active .inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+.spin.active .inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.1s ease-out,
+    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Spin Reverse
+     */
+.spin_r .inner {
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.spin_r .inner::before {
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+.spin_r .inner::after {
+  transition: bottom 0.1s 0.25s ease-in,
+    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.spin_r.active .inner {
+  transform: rotate(-225deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.spin_r.active .inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+.spin_r.active .inner::after {
+  bottom: 0;
+  transform: rotate(90deg);
+  transition: bottom 0.1s ease-out,
+    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Spring
+     */
+.spring .inner {
+  top: 2px;
+  transition: background-color 0s 0.13s linear;
+}
+.spring .inner::before {
+  top: 10px;
+  transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.spring .inner::after {
+  top: 20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.spring.active .inner {
+  transition-delay: 0.22s;
+  background-color: transparent !important;
+}
+.spring.active .inner::before {
+  top: 0;
+  transition: top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.spring.active .inner::after {
+  top: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translate3d(0, 10px, 0) rotate(-45deg);
+}
+
+/*
+     * Spring Reverse
+     */
+.spring_r .inner {
+  top: auto;
+  bottom: 0;
+  transition-duration: 0.13s;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.spring_r .inner::after {
+  top: -20px;
+  transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    opacity 0s linear;
+}
+.spring_r .inner::before {
+  transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+    transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.spring_r.active .inner {
+  transform: translate3d(0, -10px, 0) rotate(-45deg);
+  transition-delay: 0.22s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.spring_r.active .inner::after {
+  top: 0;
+  opacity: 0;
+  transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    opacity 0s 0.22s linear;
+}
+.spring_r.active .inner::before {
+  top: 0;
+  transform: rotate(90deg);
+  transition: top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+    transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Stand
+     */
+.stand .inner {
+  transition: transform 0.075s 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    background-color 0s 0.075s linear;
+}
+.stand .inner::before {
+  transition: top 0.075s 0.075s ease-in,
+    transform 0.075s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.stand .inner::after {
+  transition: bottom 0.075s 0.075s ease-in,
+    transform 0.075s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.stand.active .inner {
+  transform: rotate(90deg);
+  background-color: transparent !important;
+  transition: transform 0.075s 0s cubic-bezier(0.215, 0.61, 0.355, 1),
+    background-color 0s 0.15s linear;
+}
+.stand.active .inner::before {
+  top: 0;
+  transform: rotate(-45deg);
+  transition: top 0.075s 0.1s ease-out,
+    transform 0.075s 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.stand.active .inner::after {
+  bottom: 0;
+  transform: rotate(45deg);
+  transition: bottom 0.075s 0.1s ease-out,
+    transform 0.075s 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Stand Reverse
+     */
+.stand_r .inner {
+  transition: transform 0.075s 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    background-color 0s 0.075s linear;
+}
+.stand_r .inner::before {
+  transition: top 0.075s 0.075s ease-in,
+    transform 0.075s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.stand_r .inner::after {
+  transition: bottom 0.075s 0.075s ease-in,
+    transform 0.075s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.stand_r.active .inner {
+  transform: rotate(-90deg);
+  background-color: transparent !important;
+  transition: transform 0.075s 0s cubic-bezier(0.215, 0.61, 0.355, 1),
+    background-color 0s 0.15s linear;
+}
+.stand_r.active .inner::before {
+  top: 0;
+  transform: rotate(-45deg);
+  transition: top 0.075s 0.1s ease-out,
+    transform 0.075s 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.stand_r.active .inner::after {
+  bottom: 0;
+  transform: rotate(45deg);
+  transition: bottom 0.075s 0.1s ease-out,
+    transform 0.075s 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Squeeze
+     */
+.squeeze .inner {
+  transition-duration: 0.075s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.squeeze .inner::before {
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+.squeeze .inner::after {
+  transition: bottom 0.075s 0.12s ease,
+    transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.squeeze.active .inner {
+  transform: rotate(45deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.squeeze.active .inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+.squeeze.active .inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.075s ease,
+    transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Vortex
+     */
+.vortex .inner {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.vortex .inner::before,
+.vortex .inner::after {
+  transition-duration: 0s;
+  transition-delay: 0.1s;
+  transition-timing-function: linear;
+}
+.vortex .inner::before {
+  transition-property: top, opacity;
+}
+.vortex .inner::after {
+  transition-property: bottom, transform;
+}
+
+.vortex.active .inner {
+  transform: rotate(765deg);
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.vortex.active .inner::before,
+.vortex.active .inner::after {
+  transition-delay: 0s;
+}
+.vortex.active .inner::before {
+  top: 0;
+  opacity: 0;
+}
+.vortex.active .inner::after {
+  bottom: 0;
+  transform: rotate(90deg);
+}
+
+/*
+     * Vortex Reverse
+     */
+.vortex_r .inner {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.vortex_r .inner::before,
+.vortex_r .inner::after {
+  transition-duration: 0s;
+  transition-delay: 0.1s;
+  transition-timing-function: linear;
+}
+.vortex_r .inner::before {
+  transition-property: top, opacity;
+}
+.vortex_r .inner::after {
+  transition-property: bottom, transform;
+}
+
+.vortex_r.active .inner {
+  transform: rotate(-765deg);
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.vortex_r.active .inner::before,
+.vortex_r.active .inner::after {
+  transition-delay: 0s;
+}
+.vortex_r.active .inner::before {
+  top: 0;
+  opacity: 0;
+}
+.vortex_r.active .inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+}
