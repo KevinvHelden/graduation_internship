@@ -31,6 +31,7 @@
 
 .root .tablerowItemContainer {
   width: 100%;
+  display: grid;
   white-space: nowrap;
   padding-right: var(--layout-medium);
 }
