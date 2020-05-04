@@ -8,7 +8,8 @@
   background-color: var(--white);
   width: calc(100% - var(--layout-medium));
   margin-right: var(--layout-medium);
-  height: 50px;
+  min-height: 65px;
+  height: 65px;
   display: flex;
 }
 
@@ -35,7 +36,6 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  line-height: var(--default-font-size-paragraph);
   margin: auto 0;
   padding: calc(calc(50px - 15px) / 2);
   padding-left: 0;

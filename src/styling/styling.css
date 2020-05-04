@@ -5,10 +5,12 @@
   --primaryBrandColour: var(--black);
   --primary: var(--blue);
   --primaryHover: var(--darkBlue);
-  --secondary: var(--orange);
-  --secondaryHover: var(--darkOrange);
+  --secondary: var(--black);
+  --secondaryHover: var(--darkGrey);
   --success: var(--green);
   --successHover: var(--darkGreen);
+  --edit: var(--orange);
+  --editHover: var(--darkOrange);
   --warning: var(--yellow);
   --destructive: var(--red);
   --destructiveHover: var(--darkRed);

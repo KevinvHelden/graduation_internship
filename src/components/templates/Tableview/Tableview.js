@@ -78,8 +78,8 @@ class Tableview extends PureComponent {
           <Button text={"Add article"} iconBefore={"add"} />
           <Button
             text={"Filter"}
-            variant={"ghost"}
-            iconBefore={"filter_orange"}
+            variant={"secondary"}
+            iconBefore={"filter"}
           />
           {searchbar && (
             <div className={classnames(styles.searchbar)}>

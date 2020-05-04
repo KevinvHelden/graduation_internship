@@ -5,8 +5,6 @@ import classnames from "classnames";
 import { Text } from "../../primitives";
 import { Button } from "../../elements";
 
-import mockupProfile from "../../../images/profilePicture.png";
-
 class Navigation extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,13 +13,13 @@ class Navigation extends PureComponent {
 
   static propTypes = {
     /**
-     * An example propType
+     * The data used in the navigation
      */
-    propType: PropTypes.node,
+    data: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
-    propType: null,
+    data: null,
   };
 
   //Dynamically maps all sections to the navigation
@@ -35,21 +33,18 @@ class Navigation extends PureComponent {
 
   render() {
     const { handleContent } = this;
-    const pageInfo = {
-      username: "Martijn",
-      pages: ["Noise", "Articles", "Users"],
-    };
+    const { data } = this.props;
 
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.user)}>
           <div className={classnames(styles.profilePicture)}>
-            <img src={mockupProfile} alt={"profile"} />
+            <img src={data.user.profilePicture} alt={"profile"} />
           </div>
-          <Text text={pageInfo.username} variant={"h4"} light />
+          <Text text={data.user.name} variant={"h4"} light />
         </div>
         <div className={classnames(styles.pageLinks)}>
-          {handleContent(pageInfo.pages)}
+          {handleContent(data.pages)}
         </div>
         <Button text={"Log out"} variant={"destructive"} iconBefore={"exit"} />
       </div>

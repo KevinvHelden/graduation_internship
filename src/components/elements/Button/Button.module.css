@@ -55,6 +55,10 @@
   background-color: var(--success);
 }
 
+.root.edit {
+  background-color: var(--edit);
+}
+
 .root.destructive {
   background-color: var(--destructive);
 }
@@ -89,6 +93,10 @@
 
   .root.success:hover {
     background-color: var(--successHover);
+  }
+
+  .root.edit:hover {
+    background-color: var(--editHover);
   }
 
   .root.destructive:hover {

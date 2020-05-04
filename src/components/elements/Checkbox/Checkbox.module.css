@@ -2,14 +2,19 @@
 
 :root {
   --checkbox-active-background: var(--border-active);
+  --checkbox-size: 18px;
+  --checkmark-width: 3px;
+  --checkmark-height: calc(var(--checkmark-width) * 2);
 }
 
 /* The container */
 .root {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     cursor: pointer;
-    margin: calc(calc(50px - 15px) / 2);
+    margin: calc(calc(50px - var(--checkbox-size)) / 2);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -28,8 +33,8 @@
   /* Create a custom checkbox */
   .checkmark {
     position: relative;
-    height: 15px;
-    width: 15px;
+    height: var(--checkbox-size);
+    width: var(--checkbox-size);
     display: block;
     border-radius: var(--border-radius-extra-small);
     background-color: var(--white);
@@ -62,10 +67,10 @@
   
   /* Style the checkmark/indicator */
   .root .checkmark:after {
-    left: 5px;
-    top: 2px;
-    width: 3px;
-    height: 6px;
+    left: 6.7px;
+    top: 3.5px;
+    width: var(--checkmark-width);
+    height: var(--checkmark-height);
     border: solid white;
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);

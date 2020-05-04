@@ -2,7 +2,7 @@
 
 :root {
   --editbar-height: 80px;
-  --editbar-width: 800px;
+  --editbar-width: 640px;
   --editbar-width-mobile: 100px;
   --editbar-height-mobile: 276px;
 }
@@ -67,7 +67,7 @@
     width: var(--editbar-width);
     height: var(--editbar-height);
     border-radius: var(--border-radius-extra-large);
-    left: calc(50% - 400px);
+    left: calc(50% - calc(var(--editbar-width) / 2));
     flex-direction: row;
     padding: 0 30px;
   }
@@ -106,7 +106,7 @@
 
 @media only screen and (min-width: 1200px) {
   .root {
-    left: calc(calc(50% + 130px) - 400px);
+    left: calc(calc(50% + 130px) - calc(var(--editbar-width) / 2));
   }
 }
 
