@@ -11,10 +11,6 @@
   backdrop-filter: blur(8px);
 }
 
-.root p {
-  color: var(--grey1);
-}
-
 .root .user {
   margin-bottom: var(--layout-extra-large);
   width: auto;
@@ -36,6 +32,15 @@
   margin-bottom: var(--layout-medium);
 }
 
+.root .pageLinks .pageLink {
+  color: var(--grey1);
+  transition: var(--fast-transition);
+}
+
+.root .pageLinks .pageLink.active h5{
+  color: var(--white);
+}
+
 .root button {
   margin-top: auto;
 }
@@ -43,5 +48,9 @@
 @media only screen and (min-width: 1200px) {
   .root {
     display: flex;
+  }
+
+  .root .pageLinks .pageLink :hover {
+    color: var(--white);
   }
 }

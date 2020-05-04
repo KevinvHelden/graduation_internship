@@ -1,0 +1,13 @@
+@import "../../../styling/styling.css";
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.root > * {
+    margin-bottom: var(--layout-medium); 
+}

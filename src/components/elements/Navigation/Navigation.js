@@ -4,6 +4,7 @@ import styles from "./Navigation.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
 import { Button } from "../../elements";
+import { Link } from "react-router-dom";
 
 class Navigation extends PureComponent {
   constructor(props) {
@@ -25,7 +26,11 @@ class Navigation extends PureComponent {
   //Dynamically maps all sections to the navigation
   handleContent = (pagesData) => {
     const pages = pagesData.map((page, id) => (
-      <Text key={id} text={page} variant={"h5"} strong light />
+      <div className={classnames(styles.pageLink)}>
+        <Link to={"/" + page.toLowerCase().replace(/\s/g, "")}>
+          <Text key={id} text={page} variant={"h5"} strong />
+        </Link>
+      </div>
     ));
     //Returns formatted pages in the navigation
     return pages;

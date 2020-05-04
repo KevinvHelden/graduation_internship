@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .root.strong {
   font-weight: bold;
 }
