@@ -40,6 +40,7 @@ class Table extends PureComponent {
     const { mainChecked } = this.state;
     //Disable state that says tablerow clicked on master checkbox so that tables changes with this behaviour
     this.setState({ tablerowUncheckedMain: false });
+    this.addOrRemoveAllRowsFromSelected(!mainChecked);
     //Change state of checkbox
     this.setState({ mainChecked: !mainChecked });
   };
@@ -52,6 +53,16 @@ class Table extends PureComponent {
     this.setState({ mainChecked: false });
   };
 
+  addOrRemoveAllRowsFromSelected = (checked) => {
+    const { rows } = this.props;
+    const allChecked = [];
+    const allUnchecked = [];
+    rows.map((row) => allChecked.push({ id: row.id, selected: true }));
+    checked
+      ? this.setState({ selectedRows: allChecked })
+      : this.setState({ selectedRows: allUnchecked });
+  };
+
   checkIfSelected = (id, selectedState) => {
     const { selectedRows } = this.state;
     const selectedArr = [].concat(selectedRows);
@@ -62,38 +73,34 @@ class Table extends PureComponent {
       selectedState &&
       !selectedRows.includes({ id: id, selected: selectedState })
     ) {
-      console.log("I got selected.");
       selectedArr.push({ id: id, selected: selectedState });
       //The tablerow was deselected and is in the current selected array
     } else if (
       !selectedState &&
       selectedRows.includes({ id: id, selected: selectedState })
     ) {
-      console.log("I got deselected.");
       selectedArr.splice(arrIndex, 1);
+      //the tablerow was selected and is already in the current selected array
     } else if (
       selectedState &&
       selectedRows.includes({ id: id, selected: selectedState })
     ) {
-      console.log("I got selected but was already in the array...");
       selectedArr.splice(arrIndex, 1);
+      //the tablerow was deselected and wasn't in the current selected array
     } else if (
       !selectedState &&
       !selectedRows.includes({ id: id, selected: selectedState })
     ) {
-      console.log(
-        "I got deselected but i wasn't in the array in the first place..."
-      );
       selectedArr.splice(arrIndex, 1);
     }
     this.setState({
       selectedRows: selectedArr,
     });
-    console.log(selectedArr);
   };
 
-  handleRowFunctions = () => {
+  handleRowFunctions = (id, selectedState) => {
     this.turnOffMainCheckbox();
+    this.checkIfSelected(id, selectedState);
   };
 
   //Determines how many items should be shown after the row title
@@ -143,7 +150,7 @@ class Table extends PureComponent {
   handleRows = () => {
     const { mainChecked, tablerowUncheckedMain } = this.state;
     const { dividers, rows } = this.props;
-    const { handleRowFunctions, checkIfSelected } = this;
+    const { handleRowFunctions } = this;
     const tablerows = rows;
 
     const returnRows =
@@ -154,7 +161,6 @@ class Table extends PureComponent {
           divider={dividers}
           selectedProp={mainChecked}
           clickFunc={handleRowFunctions}
-          updateFunc={checkIfSelected}
           tablerowUncheckedMain={tablerowUncheckedMain}
           invisible={false}
           data={tablerow}
