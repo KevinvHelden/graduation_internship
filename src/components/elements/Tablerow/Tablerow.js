@@ -79,43 +79,44 @@ class Tablerow extends PureComponent {
     if (screenWidth >= 1200) {
       size = 3;
       returnArray = data && data.slice(0, size);
-      return returnArray
-    } 
+      return returnArray;
+    }
     //tablet size, show just first item
     else if (screenWidth >= 768) {
       size = 1;
       returnArray = data && data.slice(0, size);
-      return returnArray
-    } 
+      return returnArray;
+    }
     //phone size, show no items
     else if (screenWidth < 768) {
-      return
+      return;
     }
   };
 
   //Selects or deselects this component
   selectFunction = () => {
+    const { clickFunc, data } = this.props;
     const { selected } = this.state;
+    //Checks if there is a click function from parent before executing it
+    clickFunc && clickFunc(data.id, !selected);
     //Change state of the tablerow to the opposite
     this.setState({ selected: !selected });
   };
 
   handleClicked = () => {
-    const { clickFunc, data } = this.props;
-    const { selected } = this.state;
-    //Checks if there is a click function from parent before executing it
-    clickFunc && clickFunc(data.id, !selected);
     //Selects or deselects this component
     this.selectFunction();
   };
 
   handleTablerowItems = (data) => {
     const formattedData = this.formatData(data);
-    const returnData = formattedData && formattedData.map((dataItem, id) => (
-      <div key={id} className={classnames(styles.tablerowItemContainer)}>
-        <Text text={dataItem} key={id} />
-      </div>
-    ));
+    const returnData =
+      formattedData &&
+      formattedData.map((dataItem, id) => (
+        <div key={id} className={classnames(styles.tablerowItemContainer)}>
+          <Text text={dataItem} key={id} />
+        </div>
+      ));
     return returnData;
   };
 
