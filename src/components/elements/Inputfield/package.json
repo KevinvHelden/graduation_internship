@@ -1,0 +1,6 @@
+{
+    "name": "Inputfield",
+    "version": "0.0.1",
+    "main": "./Inputfield.js",
+    "private": true
+}

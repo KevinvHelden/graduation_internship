@@ -1,0 +1,30 @@
+@import "../../../styling/styling.css";
+
+.root {
+    width: 100%;
+}
+
+.root input {
+    width: 100%;
+    height: 50px;
+    padding: 0 var(--layout-medium);
+    outline: none;
+    transition: var(--default-transition);
+    margin-top: var(--layout-small);
+    border-radius: var(--border-radius-small);
+    border: 1px var(--grey4) solid;
+    font-size: var(--default-font-size-paragraph);
+    font-family: var(--default-font-paragraph);
+}
+
+.root input::placeholder {
+    color: var(--grey1);
+}
+
+.root input:not(:placeholder-shown) {
+    border: 1px var(--black) solid;
+}
+
+.root input:hover {
+    border: 1px var(--primary) solid;
+}
