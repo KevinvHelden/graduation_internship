@@ -1,0 +1,32 @@
+@import "../../../styling/styling.css";
+
+.root {
+    width: 100%;
+}
+
+.root textarea {
+    width: 100%;
+    min-height: 200px;
+    height: auto;
+    transition: var(--default-transition);
+    padding: var(--layout-small) var(--layout-medium);
+    outline: none;
+    margin-top: var(--layout-small);
+    border-radius: var(--border-radius-small);
+    border: 1px var(--grey4) solid;
+    font-size: var(--default-font-size-paragraph);
+    font-family: var(--default-font-paragraph);
+    resize: none;
+}
+
+.root textarea::placeholder {
+    color: var(--grey1);
+}
+
+.root textarea:not(:placeholder-shown) {
+    border: 1px var(--black) solid;
+}
+
+.root textarea:hover {
+    border: 1px var(--primary) solid;
+}
