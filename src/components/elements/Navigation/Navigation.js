@@ -26,7 +26,7 @@ class Navigation extends PureComponent {
   //Dynamically maps all sections to the navigation
   handleContent = (pagesData) => {
     const pages = pagesData.map((page, id) => (
-      <div className={classnames(styles.pageLink)}>
+      <div key={id} className={classnames(styles.pageLink)}>
         <Link to={"/" + page.toLowerCase().replace(/\s/g, "")}>
           <Text key={id} text={page} variant={"h5"} strong />
         </Link>

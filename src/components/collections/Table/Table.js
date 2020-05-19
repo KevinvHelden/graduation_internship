@@ -29,6 +29,10 @@ class Table extends PureComponent {
      * The data used to fill the rows
      */
     rows: PropTypes.array.isRequired,
+    /**
+     * Pressing the edit button will make the edit screen pop up
+     */
+    editItem: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -172,6 +176,7 @@ class Table extends PureComponent {
 
   render() {
     const { selectMainCheckbox, handleRows, handleHeaderItems } = this;
+    const { editItem } = this.props;
     const { mainChecked, selectedRows } = this.state;
     const headerItems = handleHeaderItems();
     const rows = handleRows();
@@ -190,7 +195,7 @@ class Table extends PureComponent {
           </div>
           <div className={classnames(styles.tableContent)}>{rows}</div>
         </div>
-        <Editbar selected={selectedRows} />
+        <Editbar selected={selectedRows} editFunc={editItem} />
       </Fragment>
     );
   }
