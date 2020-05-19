@@ -1,0 +1,68 @@
+@import "../../../styling/styling.css";
+
+.root {
+    position: fixed;
+    width: 900px;
+    height: calc(100vh - var(--layout-medium));
+    top: 100vh;
+    left: calc(50vw - 450px);
+    background-color: var(--white);
+    z-index: 10;
+    transition: var(--default-transition);
+    border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+    padding: var(--layout-large);
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.root.active {
+    display: flex;
+    top: var(--layout-medium);
+}
+
+.root hr {
+    border: 1px var(--grey4) solid;
+    margin: var(--layout-small) 0 0 0;
+}
+
+.root .pageHeader {
+    margin-bottom: var(--layout-large);
+}
+
+.root .pageContent {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.root .pageContent > * {
+    margin-bottom: var(--layout-medium);
+}
+
+.root .pageActions {
+    width: 100%;
+    height: auto;
+    margin-top: var(--layout-medium);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.haze {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    z-index: -1;
+    transition: var(--default-transition);
+}
+
+.haze.active {
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+}

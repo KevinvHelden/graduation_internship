@@ -1,0 +1,6 @@
+{
+    "name": "PopupPage",
+    "version": "0.0.1",
+    "main": "./PopupPage.js",
+    "private": true
+}
