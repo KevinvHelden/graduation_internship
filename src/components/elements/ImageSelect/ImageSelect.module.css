@@ -1,0 +1,54 @@
+@import "../../../styling/styling.css";
+
+.root {
+}
+
+.root .imageSelect {
+  margin-top: var(--layout-small);
+  width: 100%;
+  height: 200px;
+  background-color: var(--grey6);
+  border-radius: var(--border-radius-large);
+}
+
+.root .imageSelect .fileInput {
+  width: 100%;
+  height: 200px;
+  color: transparent;
+  outline: none;
+  opacity: 1;
+}
+
+.root .imageSelect .fileInput .invisible{
+    opacity: 0;
+}
+
+.root .imageSelect .fileInput::-webkit-file-upload-button {
+  visibility: hidden;
+  outline: none;
+}
+
+.root .imageSelect .fileInput::before {
+  content: "Add image";
+  color: var(--default-typography-colour);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-large);
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  font-size: var(--default-font-size-h4);
+  font-weight: var(--black-font-weight-heading);
+  font-family: var(--default-font-heading);
+}
+
+.root .imageSelect .fileInput:active {
+  outline: none;
+}
+
+.root .imageSelect .fileInput:active::before {
+  outline: none;
+}
