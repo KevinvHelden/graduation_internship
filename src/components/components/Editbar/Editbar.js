@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Editbar.module.css";
 import classnames from "classnames";
+import RootRef from "@material-ui/core/RootRef";
 
 import { Button } from "../../elements";
 import { Text } from "../../primitives";
@@ -10,18 +11,33 @@ class Editbar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+    this.editButtonRef = React.createRef();
   }
 
   static propTypes = {
     /**
-     * An example propType
+     * An array of the selected items
      */
     selected: PropTypes.array.isRequired,
+    /**
+     * Clicking the edit button makes the edit screen pop up
+     */
+    editFunc: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     selected: [],
   };
+
+  componentDidMount() {
+    const { editFunc } = this.props;
+    editFunc && this.editButtonRef.current.addEventListener("click", editFunc);
+  }
+
+  componentWillUnmount() {
+    const { editFunc } = this.props;
+    editFunc && this.editButtonRef.current.addEventListener("click", editFunc);
+  }
 
   //checks if the buttons should be squared or not
   checkScreenWidth = () => {
@@ -34,7 +50,7 @@ class Editbar extends PureComponent {
   };
 
   render() {
-    const { checkScreenWidth } = this;
+    const { checkScreenWidth, editButtonRef } = this;
     const { selected } = this.props;
     const numberOfSelected = selected.length;
     const anythingSelected = numberOfSelected > 0;
@@ -62,13 +78,15 @@ class Editbar extends PureComponent {
           </div>
         </div>
         <div className={classnames(styles.actions)}>
-          <Button
-            square={checkScreenWidth()}
-            text={"Edit article"}
-            disabled={multipleSelected}
-            variant={"edit"}
-            iconBefore={"edit"}
-          />
+          <RootRef rootRef={editButtonRef}>
+            <Button
+              square={checkScreenWidth()}
+              text={"Edit article"}
+              disabled={multipleSelected}
+              variant={"edit"}
+              iconBefore={"edit"}
+            />
+          </RootRef>
           <Button
             square={checkScreenWidth()}
             text={"Delete"}
