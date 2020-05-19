@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Tableview.module.css";
 import classnames from "classnames";
+import RootRef from "@material-ui/core/RootRef";
 
 import { Searchbar, Button } from "../../elements";
 import { Table } from "../../collections";
@@ -14,6 +15,7 @@ class Tableview extends PureComponent {
       tableheaderItems: [],
       visibleTableRows: [],
     };
+    this.primaryButtonRef = React.createRef();
   }
 
   static propTypes = {
@@ -29,6 +31,14 @@ class Tableview extends PureComponent {
      * The data used to fill the table
      */
     data: PropTypes.object.isRequired,
+    /**
+     * The function for the primary action button
+     */
+    primaryActionButton: PropTypes.func,
+    /**
+     * clicking the edit button makes the edit page pop upÎ
+     */
+    editButton: PropTypes.func,
   };
 
   static defaultProps = {
@@ -37,7 +47,22 @@ class Tableview extends PureComponent {
 
   //Initialises the table data
   componentDidMount() {
+    const { primaryActionButton } = this.props;
+    primaryActionButton &&
+      this.primaryButtonRef.current.addEventListener(
+        "click",
+        primaryActionButton
+      );
     this.initTable();
+  }
+
+  componentWillUnmount() {
+    const { primaryActionButton } = this.props;
+    primaryActionButton &&
+      this.primaryButtonRef.current.removeEventListener(
+        "click",
+        primaryActionButton
+      );
   }
 
   //Makes the table info dependant on the state of this view so it can be edited
@@ -68,19 +93,17 @@ class Tableview extends PureComponent {
   };
 
   render() {
-    const { searchbar } = this.props;
+    const { searchbar, editButton } = this.props;
     const { initialTablerows, tableheaderItems, visibleTableRows } = this.state;
-    const { updateRows } = this;
+    const { updateRows, primaryButtonRef } = this;
 
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.actions)}>
-          <Button text={"Add article"} iconBefore={"add"} />
-          <Button
-            text={"Filter"}
-            variant={"secondary"}
-            iconBefore={"filter"}
-          />
+          <RootRef rootRef={primaryButtonRef}>
+            <Button text={"Add article"} iconBefore={"add"} />
+          </RootRef>
+          <Button text={"Filter"} variant={"secondary"} iconBefore={"filter"} />
           {searchbar && (
             <div className={classnames(styles.searchbar)}>
               <Searchbar searchItems={initialTablerows} typeFunc={updateRows} />
@@ -88,7 +111,11 @@ class Tableview extends PureComponent {
           )}
         </div>
         <div className={classnames(styles.table)}>
-          <Table headerItems={tableheaderItems} rows={visibleTableRows} />
+          <Table
+            headerItems={tableheaderItems}
+            rows={visibleTableRows}
+            editItem={editButton}
+          />
         </div>
       </div>
     );
