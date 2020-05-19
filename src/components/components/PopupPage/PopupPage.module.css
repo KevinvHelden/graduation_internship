@@ -30,27 +30,6 @@
     margin-bottom: var(--layout-large);
 }
 
-.root .pageContent {
-    width: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-
-.root .pageContent > * {
-    margin-bottom: var(--layout-medium);
-}
-
-.root .pageActions {
-    width: 100%;
-    height: auto;
-    margin-top: var(--layout-medium);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .haze {
     position: absolute;
     width: 100vw;

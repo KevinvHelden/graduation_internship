@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import styles from "./PopupPage.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
-import { Button, Inputfield, Textarea, ImageSelect } from "../../elements";
-import RootRef from "@material-ui/core/RootRef";
+
+import { AddArticle, EditArticle } from "./Templates";
 
 class PopupPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-    this.dismissButtonRef = React.createRef();
   }
 
   static propTypes = {
@@ -23,30 +22,41 @@ class PopupPage extends PureComponent {
      */
     popupActive: PropTypes.bool.isRequired,
     /**
+     * The type of content in the popuppage
+     */
+    template: PropTypes.oneOf(["article"]).isRequired,
+    /**
+     * Wether the popuppage should open an add or edit page
+     */
+    purpose: PropTypes.oneOf(["add", "edit"]).isRequired,
+    /**
      * The haze dismisses the popup page with this function
      */
     dismissPopupPage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    // title: "Popup page title",
+    popupActive: false,
   };
 
-  componentDidMount() {
-    const { dismissPopupPage } = this.props;
-    dismissPopupPage &&
-      this.dismissButtonRef.current.addEventListener("click", dismissPopupPage);
-  }
+  capitalizeFirstLetter = (string) => {
+    return string[0].toUpperCase() + string.slice(1);
+  };
 
-  componentWillUnmount() {
-    const { dismissPopupPage } = this.props;
-    dismissPopupPage &&
-      this.dismissButtonRef.current.addEventListener("click", dismissPopupPage);
-  }
+  FormatTitle = (arrayWithWords) => {
+    const { capitalizeFirstLetter } = this;
+    let returnTitle = "";
+    arrayWithWords.map(
+      (word) => (returnTitle = returnTitle.concat(word + " "))
+    );
+    returnTitle = capitalizeFirstLetter(returnTitle);
+    return returnTitle;
+  };
 
   render() {
-    const { title, active } = this.props;
-    const { dismissButtonRef } = this;
+    const { FormatTitle } = this;
+    const { active, dismissPopupPage, template, purpose } = this.props;
+    const title = FormatTitle([purpose, template]);
 
     return (
       <Fragment>
@@ -56,17 +66,12 @@ class PopupPage extends PureComponent {
             <Text text={title} variant={"h2"} />
             <hr />
           </div>
-          <div className={classnames(styles.pageContent)}>
-            <ImageSelect title={"Banner image"} />
-            <Inputfield title={"Title"} />
-            <Textarea title={"Text"} />
-          </div>
-          <div className={classnames(styles.pageActions)}>
-            <RootRef rootRef={dismissButtonRef}>
-              <Button text={"Cancel"} variant={"ghost"} />
-            </RootRef>
-            <Button text={"Save"} variant={"success"} iconBefore={"save"} />
-          </div>
+          {template === "article" && purpose === "add" && (
+            <AddArticle dismissPopupPage={dismissPopupPage} />
+          )}
+          {template === "article" && purpose === "edit" && (
+            <EditArticle dismissPopupPage={dismissPopupPage} />
+          )}
         </div>
       </Fragment>
     );

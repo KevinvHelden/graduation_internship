@@ -1,0 +1,6 @@
+{
+    "name": "AddArticle",
+    "version": "0.0.1",
+    "main": "./Add.js",
+    "private": true
+}

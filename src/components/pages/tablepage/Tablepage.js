@@ -10,8 +10,7 @@ class Tablepage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      popupTitle: "",
-      popupActive: false,
+      popupPage: { active: false, template: "user", purpose: "add", title: "" },
     };
   }
 
@@ -27,21 +26,32 @@ class Tablepage extends PureComponent {
   };
 
   addItem = () => {
-    this.setState({ popupTitle: "Add article", popupActive: true });
+    this.setState({
+      popupPage: { active: true, template: "article", purpose: "add" },
+    });
   };
 
   editItem = () => {
-    this.setState({ popupTitle: "Edit article", popupActive: true });
+    this.setState({
+      popupPage: { active: true, template: "article", purpose: "edit" },
+    });
   };
 
   dismissPopupPage = () => {
-    this.setState({ popupActive: false });
+    const { popupPage } = this.state;
+    this.setState({
+      popupPage: {
+        active: false,
+        template: popupPage.template,
+        purpose: popupPage.purpose,
+      },
+    });
   };
 
   render() {
     const { addItem, editItem, dismissPopupPage } = this;
     const { title, data } = this.props;
-    const { popupTitle, popupActive } = this.state;
+    const { popupPage } = this.state;
 
     return (
       <Fragment>
@@ -57,8 +67,9 @@ class Tablepage extends PureComponent {
           />
         </div>
         <PopupPage
-          title={popupTitle}
-          active={popupActive}
+          active={popupPage.active}
+          template={popupPage.template}
+          purpose={popupPage.purpose}
           dismissPopupPage={dismissPopupPage}
         />
       </Fragment>

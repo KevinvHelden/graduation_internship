@@ -1,0 +1,6 @@
+{
+    "name": "EditArticle",
+    "version": "0.0.1",
+    "main": "./Edit.js",
+    "private": true
+}
