@@ -54,8 +54,8 @@ class Searchbar extends PureComponent {
     //The value in the searchfield
     const inputValue = searchField.value;
     //Filter given array with searchfield values
-    const result = arrayToSearchIn.filter(
-      (arrayItem) => arrayItem.title.toLowerCase().includes(inputValue)
+    const result = arrayToSearchIn.filter((arrayItem) =>
+      arrayItem.title.toLowerCase().includes(inputValue.toLowerCase())
     );
     //Return filtered array
     typeFunc(result);
