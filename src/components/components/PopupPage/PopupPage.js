@@ -43,7 +43,7 @@ class PopupPage extends PureComponent {
     return string[0].toUpperCase() + string.slice(1);
   };
 
-  FormatTitle = (arrayWithWords) => {
+  formatTitle = (arrayWithWords) => {
     const { capitalizeFirstLetter } = this;
     let returnTitle = "";
     arrayWithWords.map(
@@ -54,9 +54,9 @@ class PopupPage extends PureComponent {
   };
 
   render() {
-    const { FormatTitle } = this;
+    const { formatTitle } = this;
     const { active, dismissPopupPage, template, purpose } = this.props;
-    const title = FormatTitle([purpose, template]);
+    const title = formatTitle([purpose, template]);
 
     return (
       <Fragment>

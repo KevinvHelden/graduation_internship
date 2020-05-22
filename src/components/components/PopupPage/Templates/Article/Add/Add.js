@@ -12,28 +12,49 @@ import RootRef from "@material-ui/core/RootRef";
 class AddArticle extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectedImage: "",
+    };
     this.dismissButtonRef = React.createRef();
+    this.submitButtonRef = React.createRef();
   }
 
   componentDidMount() {
-    const { dismissPopupPage } = this.props;
-    dismissPopupPage &&
-      this.dismissButtonRef.current.addEventListener("click", dismissPopupPage);
+    this.dismissButtonRef.current.addEventListener("click", this.handleDismiss);
   }
 
   componentWillUnmount() {
-    const { dismissPopupPage } = this.props;
-    dismissPopupPage &&
-      this.dismissButtonRef.current.addEventListener("click", dismissPopupPage);
+    this.dismissButtonRef.current.addEventListener("click", this.handleDismiss);
   }
 
+  setImage = (image) => {
+    this.setState({ selectedImage: image });
+  };
+
+  clearInformation = () => {
+    this.setState({ selectedImage: "" });
+  };
+
+  handleDismiss = () => {
+    const { dismissPopupPage } = this.props;
+    dismissPopupPage && dismissPopupPage();
+    setTimeout(() => {
+      this.clearInformation();
+    }, 500);
+  };
+
   render() {
-    const { dismissButtonRef } = this;
+    const { dismissButtonRef, submitButtonRef, setImage } = this;
+    const { selectedImage } = this.state;
+
     return (
       <Fragment>
         <div className={classnames(styles.pageContent)}>
-          <ImageSelect title={"Banner image"} />
+          <ImageSelect
+            title={"Banner image"}
+            selectedImage={selectedImage}
+            parentFunc={setImage}
+          />
           <Inputfield title={"Title"} />
           <Textarea title={"Text"} />
         </div>
@@ -41,7 +62,9 @@ class AddArticle extends PureComponent {
           <RootRef rootRef={dismissButtonRef}>
             <Button text={"Cancel"} variant={"ghost"} />
           </RootRef>
-          <Button text={"Save"} variant={"success"} iconBefore={"save"} />
+          <RootRef rootRef={submitButtonRef}>
+            <Button text={"Save"} variant={"success"} iconBefore={"save"} />
+          </RootRef>
         </div>
       </Fragment>
     );

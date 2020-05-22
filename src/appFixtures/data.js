@@ -1,7 +1,7 @@
-import profilePicture from "../images/profilePicture.png";
+import profilePicture from "../images/EALogo.png";
 
 const data = {
-  user: {name: "Martijn", profilePicture: profilePicture},
+  brand: {logo: profilePicture},
   pages: ["Articles", "Noise", "Users"],
 };
 

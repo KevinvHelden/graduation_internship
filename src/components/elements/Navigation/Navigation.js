@@ -42,16 +42,13 @@ class Navigation extends PureComponent {
 
     return (
       <div className={classnames(styles.root)}>
-        <div className={classnames(styles.user)}>
-          <div className={classnames(styles.profilePicture)}>
-            <img src={data.user.profilePicture} alt={"profile"} />
-          </div>
-          <Text text={data.user.name} variant={"h4"} light />
+        <div className={classnames(styles.brandLogo)}>
+          <img src={data.brand.logo} alt={"profile"} />
         </div>
         <div className={classnames(styles.pageLinks)}>
           {handleContent(data.pages)}
+          <Button text={"Log out"} variant={"destructive"} iconBefore={"exit"} />
         </div>
-        <Button text={"Log out"} variant={"destructive"} iconBefore={"exit"} />
       </div>
     );
   }

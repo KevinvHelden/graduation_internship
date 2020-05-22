@@ -11,6 +11,7 @@ class ImageSelect extends PureComponent {
     this.state = {
       selectedImage: null,
     };
+    this.inputRef = React.createRef();
   }
 
   static propTypes = {
@@ -18,6 +19,14 @@ class ImageSelect extends PureComponent {
      * The label and placeholder of the ImageSelect
      */
     title: PropTypes.string.isRequired,
+    /**
+     * The image shown as preview
+     */
+    selectedImage: PropTypes.string.isRequired,
+    /**
+     * The preview image is set as prop
+     */
+    parentFunc: PropTypes.func.isRequired,
     /**
      * Wether the label is visible or not
      */
@@ -28,18 +37,51 @@ class ImageSelect extends PureComponent {
     hasLabel: true,
   };
 
+  componentDidMount() {
+    const { inputRef } = this;
+    inputRef.current.addEventListener("change", this.setImage);
+  }
+
+  componentWillUnmount() {
+    const { inputRef } = this;
+    inputRef.current.addEventListener("change", this.setImage);
+  }
+
+  setImage = () => {
+    const { inputRef } = this;
+    const { parentFunc } = this.props;
+    const image = inputRef.current.files[0];
+    if (image && parentFunc) {
+      parentFunc(image);
+    }
+  };
+
   render() {
-    const { title, hasLabel } = this.props;
-    const { selectedImage } = this.props;
+    const { title, hasLabel, selectedImage } = this.props;
+    const { inputRef } = this;
+    const imageSource = selectedImage && URL.createObjectURL(selectedImage);
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
         <div className={classnames(styles.imageSelect)}>
-          <image src={selectedImage} alt={"image select"} />
+          <div className={classnames(styles.imageContainer)}>
+            <img
+              className={classnames(styles.previewImage, {
+                [styles.noImageSelected]: !selectedImage,
+              })}
+              src={imageSource}
+              alt={"select"}
+            />
+          </div>
           <input
-            className={classnames(styles.fileInput)}
+            ref={inputRef}
+            className={classnames(styles.fileInput, {
+              [styles.imageSelected]: selectedImage,
+            })}
             type="file"
+            accept=".jpg, .jpeg, .png, .svg"
+            value={""}
           />
         </div>
       </div>
