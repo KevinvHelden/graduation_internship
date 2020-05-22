@@ -27,12 +27,12 @@ class Inputfield extends PureComponent {
   };
 
   render() {
-    const { title, hasLabel } = this.props;
+    const { title, hasLabel, reference } = this.props;
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
-        <input placeholder={"Add " + title.toLowerCase()} />
+        <input ref={reference} placeholder={"Add " + title.toLowerCase()} />
       </div>
     );
   }

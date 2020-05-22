@@ -27,12 +27,12 @@ class Textarea extends PureComponent {
   };
 
   render() {
-    const { title, hasLabel } = this.props;
+    const { title, hasLabel, reference } = this.props;
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
-        <textarea placeholder={"Add " + title.toLowerCase()} />
+        <textarea ref={reference} placeholder={"Add " + title.toLowerCase()} />
       </div>
     );
   }
