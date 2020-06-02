@@ -44,7 +44,7 @@ class EditArticle extends PureComponent {
         <div className={classnames(styles.pageContent)}>
           <ImageSelect title={"Banner image"} />
           <Inputfield title={"Title"} value={data.title}/>
-          <Textarea title={"Text"} />
+          <Textarea title={"Text"} value={data.title} />
         </div>
         <div className={classnames(styles.pageActions)}>
           <RootRef rootRef={dismissButtonRef}>

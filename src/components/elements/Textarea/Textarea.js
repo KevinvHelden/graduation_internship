@@ -20,19 +20,24 @@ class Textarea extends PureComponent {
      * Wether the label is visible or not
      */
     hasLabel: PropTypes.bool,
+    /**
+     * The value of the textarea
+     */
+    value: PropTypes.string,
   };
 
   static defaultProps = {
-    hasLabel: true
+    hasLabel: true,
+    value: "",
   };
 
   render() {
-    const { title, hasLabel, reference } = this.props;
+    const { title, hasLabel, reference, value } = this.props;
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
-        <textarea ref={reference} placeholder={"Add " + title.toLowerCase()} />
+        <textarea ref={reference} placeholder={"Add " + title.toLowerCase()} value={value} />
       </div>
     );
   }
