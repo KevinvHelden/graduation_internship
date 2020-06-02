@@ -8,7 +8,9 @@ import { Text } from "../../primitives";
 class Textarea extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: props.value,
+    };
   }
 
   static propTypes = {
@@ -31,13 +33,24 @@ class Textarea extends PureComponent {
     value: "",
   };
 
+  //This function makes the textarea editable after value is set by prop
+  onTodoChange = (value) => {
+    this.setState({ value: value });
+  };
+
   render() {
-    const { title, hasLabel, reference, value } = this.props;
+    const { title, hasLabel, reference } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
-        <textarea ref={reference} placeholder={"Add " + title.toLowerCase()} value={value} />
+        <textarea
+          ref={reference}
+          placeholder={"Add " + title.toLowerCase()}
+          value={value}
+          onChange={(e) => this.onTodoChange(e.target.value)}
+        />
       </div>
     );
   }

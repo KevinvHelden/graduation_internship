@@ -8,7 +8,9 @@ import { Text } from "../../primitives";
 class Inputfield extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: props.value,
+    };
   }
 
   static propTypes = {
@@ -31,13 +33,24 @@ class Inputfield extends PureComponent {
     value: "",
   };
 
+    //This function makes the inputfield editable after value is set by prop
+  onTodoChange = (value) => {
+    this.setState({ value: value });
+  };
+
   render() {
-    const { title, hasLabel, reference, value } = this.props;
+    const { title, hasLabel, reference } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classnames(styles.root)}>
         {hasLabel && <Text text={title} strong />}
-        <input ref={reference} placeholder={"Add " + title.toLowerCase()} value={value} />
+        <input
+          ref={reference}
+          placeholder={"Add " + title.toLowerCase()}
+          value={value}
+          onChange={(e) => this.onTodoChange(e.target.value)}
+        />
       </div>
     );
   }
