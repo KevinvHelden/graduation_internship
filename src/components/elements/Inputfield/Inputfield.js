@@ -33,6 +33,16 @@ class Inputfield extends PureComponent {
     value: "",
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.value !== state.value) {
+      return {
+        value: props.value,
+      };
+    }else {
+      return null
+    }
+  }
+
     //This function makes the inputfield editable after value is set by prop
   onTodoChange = (value) => {
     this.setState({ value: value });

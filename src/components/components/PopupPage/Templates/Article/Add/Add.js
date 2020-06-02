@@ -68,13 +68,13 @@ class AddArticle extends PureComponent {
   submitArticle = () => {
     const { titleRef, textRef, handleDismiss } = this;
     const { selectedImage } = this.state;
-    const data = {
-      banner: URL.createObjectURL(selectedImage),
+    const exportData = {
+      banner: selectedImage,
       title: titleRef.current.value,
       text: textRef.current.value,
     };
     if(this.checkForSubmit){
-      alert("Submitted " + data.title);
+      alert("Submitted: " + exportData.title);
       handleDismiss();
     }
   };

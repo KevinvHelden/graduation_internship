@@ -9,7 +9,7 @@ class ImageSelect extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedImage: null,
+      selectedImage: props.selectedImage,
     };
     this.inputRef = React.createRef();
   }
@@ -20,7 +20,7 @@ class ImageSelect extends PureComponent {
      */
     title: PropTypes.string.isRequired,
     /**
-     * The image shown as preview
+     * The image from the files input
      */
     selectedImage: PropTypes.string.isRequired,
     /**
@@ -47,19 +47,33 @@ class ImageSelect extends PureComponent {
     inputRef.current.addEventListener("change", this.setImage);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    return {
+      selectedImage: props.selectedImage,
+    };
+  }
+
+  selectImage = (image) => {
+    const formattedImage = URL.createObjectURL(image);
+    this.setState({ selectedImage: formattedImage });
+  };
+
   setImage = () => {
     const { inputRef } = this;
     const { parentFunc } = this.props;
     const image = inputRef.current.files[0];
-    if (image && parentFunc) {
-      parentFunc(image);
+    if (image) {
+      this.selectImage(image);
+      if (parentFunc) {
+        parentFunc(image);
+      }
     }
   };
 
   render() {
-    const { title, hasLabel, selectedImage } = this.props;
+    const { title, hasLabel } = this.props;
+    const { selectedImage } = this.state;
     const { inputRef } = this;
-    const imageSource = selectedImage && URL.createObjectURL(selectedImage);
 
     return (
       <div className={classnames(styles.root)}>
@@ -70,7 +84,7 @@ class ImageSelect extends PureComponent {
               className={classnames(styles.previewImage, {
                 [styles.noImageSelected]: !selectedImage,
               })}
-              src={imageSource}
+              src={this.state.selectedImage}
               alt={"select"}
             />
           </div>
