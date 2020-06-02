@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from "react";
+import PropTypes from "prop-types";
 import styles from "./Edit.module.css";
 import classnames from "classnames";
 import {
@@ -16,6 +17,13 @@ class EditArticle extends PureComponent {
     this.dismissButtonRef = React.createRef();
   }
 
+  static propTypes = {
+    /**
+     * The data of the selected row
+     */
+    data: PropTypes.object.isRequired,
+  };
+
   componentDidMount() {
     const { dismissPopupPage } = this.props;
     dismissPopupPage &&
@@ -30,11 +38,12 @@ class EditArticle extends PureComponent {
 
   render() {
     const { dismissButtonRef } = this;
+    const { data } = this.props;
     return (
       <Fragment>
         <div className={classnames(styles.pageContent)}>
           <ImageSelect title={"Banner image"} />
-          <Inputfield title={"Title"} />
+          <Inputfield title={"Title"} value={data.title}/>
           <Textarea title={"Text"} />
         </div>
         <div className={classnames(styles.pageActions)}>

@@ -10,7 +10,7 @@ class Tablepage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      popupPage: { active: false, template: "user", purpose: "add", title: "" },
+      popupPage: { active: false, template: "user", purpose: "add", title: "", data: {} },
     };
   }
 
@@ -25,15 +25,21 @@ class Tablepage extends PureComponent {
     // data: null
   };
 
-  addItem = () => {
+  getData = (tableRowID) => {
+    const data = this.props.data.tableRows;
+    return data[tableRowID]
+  }
+
+  addArticle = () => {
     this.setState({
       popupPage: { active: true, template: "article", purpose: "add" },
     });
   };
 
-  editItem = () => {
+  editArticle = (selectedRow) => {
+    const data = this.getData(selectedRow);
     this.setState({
-      popupPage: { active: true, template: "article", purpose: "edit" },
+      popupPage: { active: true, template: "article", purpose: "edit", data: data },
     });
   };
 
@@ -44,12 +50,13 @@ class Tablepage extends PureComponent {
         active: false,
         template: popupPage.template,
         purpose: popupPage.purpose,
+        data: {},
       },
     });
   };
 
   render() {
-    const { addItem, editItem, dismissPopupPage } = this;
+    const { addArticle, editArticle, dismissPopupPage } = this;
     const { title, data } = this.props;
     const { popupPage } = this.state;
 
@@ -61,8 +68,8 @@ class Tablepage extends PureComponent {
         <div className={classnames(styles.mainContent)}>
           <Tableview
             data={data}
-            primaryActionButton={addItem}
-            editButton={editItem}
+            primaryActionButton={addArticle}
+            editButton={editArticle}
             searchbar
           />
         </div>
@@ -70,6 +77,7 @@ class Tablepage extends PureComponent {
           active={popupPage.active}
           template={popupPage.template}
           purpose={popupPage.purpose}
+          data={popupPage.data}
           dismissPopupPage={dismissPopupPage}
         />
       </Fragment>

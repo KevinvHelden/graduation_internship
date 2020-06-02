@@ -33,6 +33,10 @@ class PopupPage extends PureComponent {
      * The haze dismisses the popup page with this function
      */
     dismissPopupPage: PropTypes.func.isRequired,
+    /**
+     * The data used in edit pages
+     */
+    data: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -55,7 +59,7 @@ class PopupPage extends PureComponent {
 
   render() {
     const { formatTitle } = this;
-    const { active, dismissPopupPage, template, purpose } = this.props;
+    const { active, dismissPopupPage, template, purpose, data } = this.props;
     const title = formatTitle([purpose, template]);
 
     return (
@@ -70,7 +74,7 @@ class PopupPage extends PureComponent {
             <AddArticle dismissPopupPage={dismissPopupPage} />
           )}
           {template === "article" && purpose === "edit" && (
-            <EditArticle dismissPopupPage={dismissPopupPage} />
+            <EditArticle data={data} dismissPopupPage={dismissPopupPage} />
           )}
         </div>
       </Fragment>

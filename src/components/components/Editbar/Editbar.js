@@ -31,12 +31,18 @@ class Editbar extends PureComponent {
 
   componentDidMount() {
     const { editFunc } = this.props;
-    editFunc && this.editButtonRef.current.addEventListener("click", editFunc);
+    editFunc && this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
   }
 
   componentWillUnmount() {
     const { editFunc } = this.props;
-    editFunc && this.editButtonRef.current.addEventListener("click", editFunc);
+    editFunc && this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
+  }
+
+  handleEditFunc = () => {
+    const { editFunc, selected } = this.props;
+    const selectedRow = selected[0].id;
+    editFunc(selectedRow);
   }
 
   //checks if the buttons should be squared or not
