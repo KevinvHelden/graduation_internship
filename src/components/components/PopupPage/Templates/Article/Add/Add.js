@@ -14,7 +14,7 @@ class AddArticle extends PureComponent {
     super(props);
     this.state = {
       selectedImage: "",
-      readyForSubmit: !false,
+      disableSubmit: !false,
     };
     this.dismissButtonRef = React.createRef();
     this.submitButtonRef = React.createRef();
@@ -50,19 +50,9 @@ class AddArticle extends PureComponent {
     this.setState({ selectedImage: image });
   };
 
-  clearInformation = () => {
-    const { titleRef, textRef } = this;
-    this.setState({ selectedImage: "" });
-    titleRef.current.value = "";
-    textRef.current.value = "";
-  };
-
   handleDismiss = () => {
     const { dismissPopupPage } = this.props;
     dismissPopupPage && dismissPopupPage();
-    setTimeout(() => {
-      this.clearInformation();
-    }, 500);
   };
 
   submitArticle = () => {
@@ -86,10 +76,10 @@ class AddArticle extends PureComponent {
     const titleNotEmpty = titleRef.current && titleRef.current.value !== "";
     const textNotEmpty = textRef.current && textRef.current.value !== "";
     if (imageSelected && titleNotEmpty && textNotEmpty) {
-      this.setState({readyForSubmit: !true});
+      this.setState({disableSubmit: !true});
       return true
     } else {
-      this.setState({readyForSubmit: !false});
+      this.setState({disableSubmit: !false});
       return false
     }
   };
@@ -102,14 +92,15 @@ class AddArticle extends PureComponent {
       titleRef,
       textRef,
     } = this;
-    const { selectedImage, readyForSubmit } = this.state;
+    const { selectedImage, disableSubmit } = this.state;
+    const formattedImage = selectedImage && URL.createObjectURL(selectedImage);
 
     return (
       <Fragment>
         <div className={classnames(styles.pageContent)}>
           <ImageSelect
             title={"Banner image"}
-            selectedImage={selectedImage}
+            selectedImage={formattedImage}
             parentFunc={setImage}
           />
           <Inputfield title={"Title"} reference={titleRef} />
@@ -124,7 +115,7 @@ class AddArticle extends PureComponent {
               text={"Save"}
               variant={"success"}
               iconBefore={"save"}
-              disabled={readyForSubmit}
+              disabled={disableSubmit}
             />
           </RootRef>
         </div>

@@ -37,7 +37,7 @@
   color: transparent;
   outline: none;
   opacity: 1;
-  margin-top: -100%;
+  margin-top: -200px;
 }
 
 .root .imageSelect .fileInput.imageSelected {

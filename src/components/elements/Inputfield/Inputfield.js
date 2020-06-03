@@ -11,6 +11,7 @@ class Inputfield extends PureComponent {
     this.state = {
       value: props.value,
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   static propTypes = {
@@ -33,19 +34,9 @@ class Inputfield extends PureComponent {
     value: "",
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.value !== state.value) {
-      return {
-        value: props.value,
-      };
-    }else {
-      return null
-    }
-  }
-
-    //This function makes the inputfield editable after value is set by prop
-  onTodoChange = (value) => {
-    this.setState({ value: value });
+  //This function makes the inputfield editable after value is set by prop
+  handleChange = (event) => {
+    this.setState({ value: event.target.value });
   };
 
   render() {
@@ -59,7 +50,7 @@ class Inputfield extends PureComponent {
           ref={reference}
           placeholder={"Add " + title.toLowerCase()}
           value={value}
-          onChange={(e) => this.onTodoChange(e.target.value)}
+          onChange={this.handleChange}
         />
       </div>
     );

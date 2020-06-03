@@ -70,10 +70,10 @@ class PopupPage extends PureComponent {
             <Text text={title} variant={"h2"} />
             <hr />
           </div>
-          {template === "article" && purpose === "add" && (
+          {template === "article" && purpose === "add" && active && (
             <AddArticle dismissPopupPage={dismissPopupPage} />
           )}
-          {template === "article" && purpose === "edit" && (
+          {template === "article" && purpose === "edit" && active && (
             <EditArticle data={data} dismissPopupPage={dismissPopupPage} />
           )}
         </div>

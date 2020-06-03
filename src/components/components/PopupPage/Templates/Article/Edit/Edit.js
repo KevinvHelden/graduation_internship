@@ -15,9 +15,10 @@ class EditArticle extends PureComponent {
     super(props);
     this.state = {
       selectedImage: props.data.image,
+      exportImage: props.data.image,
       title: "",
       description: "",
-      readyForSubmit: false,
+      disableSubmit: false,
     };
     this.dismissButtonRef = React.createRef();
     this.submitButtonRef = React.createRef();
@@ -46,36 +47,21 @@ class EditArticle extends PureComponent {
     this.dismissButtonRef.current.addEventListener("click", this.handleDismiss);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      selectedImage: props.data.image,
-    };
-  }
-
   setImage = (image) => {
-    this.setState({ selectedImage: image });
-  };
-
-  clearInformation = () => {
-    const { titleRef, textRef } = this;
-    this.setState({ selectedImage: "" });
-    titleRef.current.value = "";
-    textRef.current.value = "";
+    const formattedImage = URL.createObjectURL(image);
+    this.setState({ selectedImage: formattedImage, exportImage: image });
   };
 
   handleDismiss = () => {
     const { dismissPopupPage } = this.props;
     dismissPopupPage && dismissPopupPage();
-    setTimeout(() => {
-      this.clearInformation();
-    }, 500);
   };
 
   editArticle = () => {
     const { titleRef, textRef, handleDismiss } = this;
-    const { selectedImage } = this.state;
+    const { exportImage } = this.state;
     const exportData = {
-      banner: selectedImage,
+      banner: exportImage,
       title: titleRef.current.value,
       text: textRef.current.value,
     };
@@ -91,10 +77,10 @@ class EditArticle extends PureComponent {
     const titleNotEmpty = titleRef.current && titleRef.current.value !== "";
     const textNotEmpty = textRef.current && textRef.current.value !== "";
     if (titleNotEmpty && textNotEmpty) {
-      this.setState({ readyForSubmit: !true });
+      this.setState({ disableSubmit: !true });
       return true;
     } else {
-      this.setState({ readyForSubmit: !false });
+      this.setState({ disableSubmit: !false });
       return false;
     }
   };
@@ -108,8 +94,7 @@ class EditArticle extends PureComponent {
       submitButtonRef,
     } = this;
     const { data } = this.props;
-    const { readyForSubmit, selectedImage } = this.state;
-    console.log(selectedImage);
+    const { disableSubmit, selectedImage } = this.state;
 
     return (
       <Fragment>
@@ -135,7 +120,7 @@ class EditArticle extends PureComponent {
               text={"Save"}
               variant={"success"}
               iconBefore={"save"}
-              disabled={readyForSubmit}
+              disabled={disableSubmit}
             />
           </RootRef>
         </div>
