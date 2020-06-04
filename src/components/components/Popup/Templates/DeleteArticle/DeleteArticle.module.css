@@ -1,0 +1,38 @@
+.root .articles {
+    width: 100%;
+    height: 225px;
+    margin-bottom: var(--layout-medium);
+    overflow-y: scroll;
+    display: flex;
+    margin-top: var(--layout-large);
+  }
+  
+  .root .actions {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Scrollbar --------------------------------------------------------------------------------*/
+/* width */
+.root .articles::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+  }
+  
+  /* Track */
+  .root .articles::-webkit-scrollbar-track {
+    background: var(--border-inactive);
+    border-radius: var(--border-radius-small);
+  }
+  
+  /* Handle */
+  .root .articles::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: var(--border-radius-small);
+  }
+  
+  /* Handle on hover */
+  .root .articles::-webkit-scrollbar-thumb:hover {
+    background: var(--darkBlue);
+  }

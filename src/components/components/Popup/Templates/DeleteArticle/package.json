@@ -1,0 +1,6 @@
+{
+    "name": "DeleteArticle",
+    "version": "0.0.1",
+    "main": "./DeleteArticle.js",
+    "private": true
+}

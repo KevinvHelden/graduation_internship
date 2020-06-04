@@ -93,7 +93,7 @@ class Tableview extends PureComponent {
   };
 
   render() {
-    const { searchbar, editButton } = this.props;
+    const { searchbar, editButton, deleteButton } = this.props;
     const { initialTablerows, tableheaderItems, visibleTableRows } = this.state;
     const { updateRows, primaryButtonRef } = this;
 
@@ -115,6 +115,7 @@ class Tableview extends PureComponent {
             headerItems={tableheaderItems}
             rows={visibleTableRows}
             editItem={editButton}
+            deleteButton={deleteButton}
           />
         </div>
       </div>

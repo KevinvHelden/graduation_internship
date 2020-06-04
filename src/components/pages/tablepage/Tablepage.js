@@ -4,13 +4,21 @@ import styles from "./Tablepage.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
 import { Tableview } from "../../templates";
-import { PopupPage } from "../../components";
+import { PopupPage, Popup } from "../../components";
 
 class Tablepage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      popupPage: { active: false, template: "user", purpose: "add", title: "", data: {} },
+      popupPage: {
+        active: false,
+        template: "",
+        purpose: "",
+        title: "",
+        data: {},
+      },
+      popup: { active: false, template: "", purpose: "" },
+      selectedRows: [],
     };
   }
 
@@ -27,8 +35,8 @@ class Tablepage extends PureComponent {
 
   getData = (tableRowID) => {
     const data = this.props.data.tableRows;
-    return data[tableRowID]
-  }
+    return data[tableRowID];
+  };
 
   addArticle = () => {
     this.setState({
@@ -39,7 +47,25 @@ class Tablepage extends PureComponent {
   editArticle = (selectedRow) => {
     const data = this.getData(selectedRow);
     this.setState({
-      popupPage: { active: true, template: "article", purpose: "edit", data: data },
+      popupPage: {
+        active: true,
+        template: "article",
+        purpose: "edit",
+        data: data,
+      },
+    });
+  };
+
+  openDeleteArticles = (selectedIDs) => {
+    //All rows in the table
+    const allRows = this.props.data.tableRows;
+    // filters all rows for the selected id's. The id's come from the editbar
+    const allSelectedRows = allRows.filter((row) =>
+      selectedIDs.includes(row.id)
+    );
+    this.setState({
+      popup: { active: true, template: "article", purpose: "delete" },
+      selectedRows: allSelectedRows,
     });
   };
 
@@ -55,10 +81,22 @@ class Tablepage extends PureComponent {
     });
   };
 
+  dismissPopup = () => {
+    this.setState({
+      popup: { active: false, template: "article", purpose: "delete" },
+    });
+  };
+
   render() {
-    const { addArticle, editArticle, dismissPopupPage } = this;
+    const {
+      addArticle,
+      editArticle,
+      openDeleteArticles,
+      dismissPopupPage,
+      dismissPopup,
+    } = this;
     const { title, data } = this.props;
-    const { popupPage } = this.state;
+    const { popupPage, popup, selectedRows } = this.state;
 
     return (
       <Fragment>
@@ -70,6 +108,7 @@ class Tablepage extends PureComponent {
             data={data}
             primaryActionButton={addArticle}
             editButton={editArticle}
+            deleteButton={openDeleteArticles}
             searchbar
           />
         </div>
@@ -79,6 +118,13 @@ class Tablepage extends PureComponent {
           purpose={popupPage.purpose}
           data={popupPage.data}
           dismissPopupPage={dismissPopupPage}
+        />
+        <Popup
+          active={popup.active}
+          template={popup.template}
+          purpose={popup.purpose}
+          data={selectedRows}
+          dismissPopup={dismissPopup}
         />
       </Fragment>
     );

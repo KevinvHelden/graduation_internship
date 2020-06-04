@@ -1,0 +1,39 @@
+@import "../../../styling/styling.css";
+
+.root {
+  width: 800px;
+  height: fit-content;
+  left: 0;
+  right: 0;
+  top: 150vh;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  background-color: var(--white);
+  z-index: 10;
+  transition: var(--default-transition);
+  border-radius: var(--border-radius-medium);
+  padding: var(--layout-large);
+  display: flex;
+  flex-direction: column;
+}
+
+.root.active {
+  top: 0;
+}
+
+.haze {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: -1;
+  transition: var(--default-transition);
+}
+
+.haze.active {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+}
