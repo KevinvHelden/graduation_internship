@@ -23,6 +23,10 @@ class Editbar extends PureComponent {
      * Clicking the edit button makes the edit screen pop up
      */
     editFunc: PropTypes.func.isRequired,
+    /**
+     * Clicking the delete button opens the delete popup
+     */
+    deleteFunc: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -31,19 +35,28 @@ class Editbar extends PureComponent {
 
   componentDidMount() {
     const { editFunc } = this.props;
-    editFunc && this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
+    editFunc &&
+      this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
   }
 
   componentWillUnmount() {
     const { editFunc } = this.props;
-    editFunc && this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
+    editFunc &&
+      this.editButtonRef.current.addEventListener("click", this.handleEditFunc);
+  }
+
+  handleDeleteFunc = () => {
+    const { deleteFunc, selected } = this.props;
+    const selectedIDs = [];
+    selected.map(selectedRow => selectedIDs.push(selectedRow.id));
+    deleteFunc(selectedIDs);
   }
 
   handleEditFunc = () => {
     const { editFunc, selected } = this.props;
     const selectedRow = selected[0].id;
     editFunc(selectedRow);
-  }
+  };
 
   //checks if the buttons should be squared or not
   checkScreenWidth = () => {
@@ -56,7 +69,7 @@ class Editbar extends PureComponent {
   };
 
   render() {
-    const { checkScreenWidth, editButtonRef } = this;
+    const { checkScreenWidth, editButtonRef, handleDeleteFunc } = this;
     const { selected } = this.props;
     const numberOfSelected = selected.length;
     const anythingSelected = numberOfSelected > 0;
@@ -98,6 +111,7 @@ class Editbar extends PureComponent {
             text={"Delete"}
             variant={"destructive"}
             iconBefore={"delete"}
+            clickFunc={handleDeleteFunc}
           />
         </div>
       </div>

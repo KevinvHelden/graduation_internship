@@ -176,7 +176,7 @@ class Table extends PureComponent {
 
   render() {
     const { selectMainCheckbox, handleRows, handleHeaderItems } = this;
-    const { editItem } = this.props;
+    const { editItem, deleteButton } = this.props;
     const { mainChecked, selectedRows } = this.state;
     const headerItems = handleHeaderItems();
     const rows = handleRows();
@@ -195,7 +195,7 @@ class Table extends PureComponent {
           </div>
           <div className={classnames(styles.tableContent)}>{rows}</div>
         </div>
-        <Editbar selected={selectedRows} editFunc={editItem} />
+        <Editbar selected={selectedRows} editFunc={editItem} deleteFunc={deleteButton} />
       </Fragment>
     );
   }
