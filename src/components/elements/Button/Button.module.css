@@ -72,6 +72,16 @@
   color: var(--secondary) !important;
 }
 
+.root.word {
+  background-color: transparent;
+  width: auto;
+  height: auto;
+}
+
+.root.word p {
+  color: var(--primary) !important;
+}
+
 @media only screen and (min-width: 768px) {
   .root {
     width: var(--button-width-long);

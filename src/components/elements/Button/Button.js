@@ -8,6 +8,7 @@ class Button extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+    this.buttonRef = React.createRef();
   }
 
   static propTypes = {
@@ -33,6 +34,7 @@ class Button extends PureComponent {
       "edit",
       "destructive",
       "ghost",
+      "word",
     ]),
     /**
      * An icon showed before the text in Button
@@ -42,6 +44,10 @@ class Button extends PureComponent {
      * An icon showed after the text in Button
      */
     iconAfter: PropTypes.node,
+    /**
+     * The external function on the button
+     */
+    clickFunc: PropTypes.func,
   };
 
   static defaultProps = {
@@ -51,8 +57,22 @@ class Button extends PureComponent {
     square: false,
   };
 
+  componentDidMount() {
+    const { clickFunc } = this.props;
+    clickFunc && this.buttonRef.current.addEventListener("click", clickFunc);
+  }
+
   render() {
-    const { text, variant, disabled, rounded, square, iconBefore, iconAfter } = this.props;
+    const {
+      text,
+      variant,
+      disabled,
+      rounded,
+      square,
+      iconBefore,
+      iconAfter,
+    } = this.props;
+    const { buttonRef } = this;
 
     return (
       <button
@@ -64,11 +84,13 @@ class Button extends PureComponent {
           { [styles.edit]: variant === "edit" },
           { [styles.destructive]: variant === "destructive" },
           { [styles.ghost]: variant === "ghost" },
+          { [styles.word]: variant === "word" },
           { [styles.rounded]: rounded },
           { [styles.square]: square },
           { [styles.hasIcon]: iconBefore || iconAfter }
         )}
         disabled={disabled}
+        ref={buttonRef}
       >
         {iconBefore && <Icon icon={iconBefore} />}
         <div className={classnames(styles.textContainer)}>
