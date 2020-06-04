@@ -1,0 +1,7 @@
+@import "../../../styling/styling.css";
+
+.root {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: var(--layout-small);
+}

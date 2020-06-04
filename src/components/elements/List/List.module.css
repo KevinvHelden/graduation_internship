@@ -1,0 +1,35 @@
+@import "../../../styling/styling.css";
+
+.root {
+  width: 100%;
+  height: auto;
+}
+
+.root ol,
+ul {
+  margin: 0;
+}
+
+.root ol {
+  list-style: none;
+  counter-reset: initial;
+  padding: 0;
+}
+
+.root ol li {
+  counter-increment: item;
+}
+
+.root li :last-child {
+  margin-left: auto;
+}
+
+.root ol li:before {
+  font-weight: bold;
+  content: counter(item) ".";
+  text-align: center;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: var(--default-font-paragraph);
+  font-size: var(--default-font-size-paragraph);
+}
