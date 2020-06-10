@@ -3,6 +3,7 @@
 :root {
   --searchbar-width: 300px;
   --searchbar-width-extended: 400px;
+  --searchbar-border-radius: var(--button-border-radius);
 }
 
 .root {
@@ -22,7 +23,7 @@
 .inner {
   height: 100%;
   border: 1px var(--border-inactive) solid;
-  border-radius: var(--border-radius-large);
+  border-radius: var(--searchbar-border-radius);
   color: var(--black);
   width: 100%;
   font-family: var(--default-font-paragraph);

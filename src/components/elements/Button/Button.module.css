@@ -27,7 +27,7 @@
 }
 
 .root.rounded {
-  border-radius: var(--border-radius-large);
+  border-radius: var(--button-border-radius);
 }
 
 .root.hasIcon > :first-child {

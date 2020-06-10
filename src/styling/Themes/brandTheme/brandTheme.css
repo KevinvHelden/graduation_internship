@@ -1,0 +1,23 @@
+@import "./brandColours.css";
+@import "./brandFonts.css";
+
+:root {
+  
+    /* Font ----------------------------------------------------------------------*/
+    /* Families */
+    --themed-font-heading: "cooper light";
+    --themed-font-paragraph: "graphik regular";
+    --themed-font-mono: "pt mono";
+  
+    /* Sizes */
+    --themed-font-size-h1: 2.75rem;
+    --themed-font-size-h2: 2.25rem;
+    --themed-font-size-h3: 1.75rem;
+    --themed-font-size-h4: 1.25rem;
+    --themed-font-size-h5: 1.15rem;
+    --themed-font-size-h6: 1.1rem;
+    --themed-font-size-paragraph: 1rem;
+
+    --themed-button-height: 36px;
+    --themed-button-border-radius: 2px;
+  }

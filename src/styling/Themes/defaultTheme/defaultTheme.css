@@ -1,0 +1,41 @@
+@import "./defaultColours.css";
+
+:root {
+    /* Font ----------------------------------------------------------------------*/
+  
+    /* Families */
+    --themed-font-heading: "avenir";
+    --themed-font-paragraph: "pt sans";
+    --themed-font-mono: "pt mono";
+  
+    /* Sizes */
+    --themed-font-size-h1: 3.75rem;
+    --themed-font-size-h2: 3rem;
+    --themed-font-size-h3: 2.5rem;
+    --themed-font-size-h4: 2.125rem;
+    --themed-font-size-h5: 1.5rem;
+    --themed-font-size-h6: 1.25rem;
+    --themed-font-size-paragraph: 1rem;
+  
+    /* Animation ---------------------------------------------------------------------------*/
+    --themed-transition-duration-default: 0.3s;
+    --themed-transition-timing-function: ease-in-out;
+    --themed-transition-duration-fast: 0.1s;
+  
+    /* Sizes -------------------------------------------------------------------------------*/
+    --themed-icon-size: 15px;
+    --themed-button-height: 40px;
+    --themed-button-border-radius: var(--border-radius-large);
+  
+    /* Layout ------------------------------------------------------------------------------*/
+    --themed-layout-small: 15px;
+    --themed-layout-medium: 25px;
+    --themed-layout-large: calc(var(--themed-layout-medium) * 2);
+    --themed-layout-extra-large: calc(var(--themed-layout-large) + var(--themed-layout-medium));
+  
+    --themed-border-radius-extra-small: 3px;
+    --themed-border-radius-small: 10px;
+    --themed-border-radius-medium: 15px;
+    --themed-border-radius-large: 25px;
+    --themed-border-radius-extra-large: 40px;
+  }

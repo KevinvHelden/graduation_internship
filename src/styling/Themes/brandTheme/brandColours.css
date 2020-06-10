@@ -1,0 +1,28 @@
+:root {
+    /*UX*/
+    --blue: #007C89;
+    --green: #00C14E;
+    --orange: #E7B75F;
+    --red: #F25F25;
+    --black: #000;
+    /*darkened colours*/
+    --darkBlue: #006570;
+    --darkGreen: #00A843;
+    --darkOrange: #CFA455;
+    --darkRed: #D95521;
+    --darkGrey: #333;
+    /*elevation*/
+    --grey1: #8E8E93;
+    --grey2: #AEAEB2;
+    --grey3: #C7C7CC;
+    --grey4: #D1D1D6;
+    --grey5: #E5E5EA;
+    --grey6: #F2F2F7;
+    --white: #FFF;
+    /*extra*/
+    --ink: #172B4D;
+    --purple: #AF52DE;
+    --pink: #E81E61;
+    --moss: #94B32E;
+    --yellow: #FFCC00;
+}

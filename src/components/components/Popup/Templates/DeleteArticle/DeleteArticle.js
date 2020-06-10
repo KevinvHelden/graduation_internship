@@ -41,7 +41,7 @@ class DeleteArticle extends PureComponent {
 
   deleteAllItems = () => {
     console.log(this.state.listItems);
-  }
+  };
 
   deleteListItem = (rowId) => {
     const { dismissPopup } = this.props;
@@ -62,7 +62,7 @@ class DeleteArticle extends PureComponent {
 
     return (
       <div className={classnames(styles.root)}>
-        <Text text={"Delete articles"} variant={"h2"} />
+        <Text text={"Delete articles"} variant={"h1"} />
         <Text
           text={
             listItems.length === 1

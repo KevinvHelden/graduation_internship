@@ -1,8 +1,8 @@
-@import "./colours.css";
+@import "./Themes/defaultTheme/defaultTheme.css";
+/* @import "./Themes/brandTheme/brandTheme.css"; */
 
 :root {
   /* Colours ----------------------------------------------------------------------------*/
-  --primaryBrandColour: var(--black);
   --primary: var(--blue);
   --primaryHover: var(--darkBlue);
   --secondary: var(--black);
@@ -23,47 +23,45 @@
   /* Font ----------------------------------------------------------------------*/
 
   /* Families */
-  --default-font-heading: "avenir";
-  --default-font-paragraph: "pt sans";
-  --default-font-mono: "pt mono";
+  --default-font-heading: var(--themed-font-heading);
+  --default-font-paragraph: var(--themed-font-paragraph);
+  --default-font-mono: var(--themed-font-mono);
 
   /* Sizes */
-  --default-font-size-h1: 6rem;
-  --default-font-size-h2: 3.75rem;
-  --default-font-size-h3: 3rem;
-  --default-font-size-h4: 2.125rem;
-  --default-font-size-h5: 1.5rem;
-  --default-font-size-h6: 1.25rem;
-  --default-font-size-paragraph: 1rem;
+  --default-font-size-h1: var(--themed-font-size-h1);
+  --default-font-size-h2: var(--themed-font-size-h2);
+  --default-font-size-h3: var(--themed-font-size-h3);
+  --default-font-size-h4: var(--themed-font-size-h4);
+  --default-font-size-h5: var(--themed-font-size-h5);
+  --default-font-size-h6: var(--themed-font-size-h6);
+  --default-font-size-paragraph: var(--themed-font-size-paragraph);
 
   /* Weight */
   --black-font-weight-heading: 949;
   --medium-font-weight-heading: 500;
 
   /* Animation ---------------------------------------------------------------------------*/
-  --default-transition-duration: 0.3s;
-  --default-transition-timing-function: ease-in-out;
-  --fast-transition-duration: 0.1s;
-  --default-transition: var(--default-transition-duration)
-    var(--default-transition-timing-function);
-  --fast-transition: var(--fast-transition-duration)
-    var(--default-transition-timing-function);
+  --default-transition: var(--themed-transition-duration-default)
+    var(--themed-transition-timing-function);
+  --fast-transition: var(--themed-transition-duration-fast)
+    var(--themed-transition-timing-function);
 
   /* Sizes -------------------------------------------------------------------------------*/
-  --icon-size: 15px;
-  --button-height: 40px;
+  --icon-size: var(--themed-icon-size);
+  --button-height: var(--themed-button-height);
+  --button-border-radius: var(--themed-button-border-radius);
   --button-width-square: var(--button-height);
   --button-width-long: 150px;
 
   /* Layout ------------------------------------------------------------------------------*/
-  --layout-small: 15px;
-  --layout-medium: 25px;
-  --layout-large: calc(var(--layout-medium) * 2);
-  --layout-extra-large: calc(var(--layout-large) + var(--layout-medium));
+  --layout-small: var(--themed-layout-small);
+  --layout-medium: var(--themed-layout-medium);
+  --layout-large: var(--themed-layout-large);
+  --layout-extra-large: var(--themed-layout-extra-large);
 
-  --border-radius-extra-small: 3px;
-  --border-radius-small: 10px;
-  --border-radius-medium: 15px;
-  --border-radius-large: 25px;
-  --border-radius-extra-large: 40px;
+  --border-radius-extra-small: var(--themed-border-radius-extra-small);
+  --border-radius-small: var(--themed-border-radius-small);
+  --border-radius-medium: var(--themed-border-radius-medium);
+  --border-radius-large: var(--themed-border-radius-large);
+  --border-radius-extra-large: var(--themed-border-radius-extra-large);
 }

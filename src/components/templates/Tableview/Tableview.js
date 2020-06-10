@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Tableview.module.css";
 import classnames from "classnames";
-import RootRef from "@material-ui/core/RootRef";
 
 import { Searchbar, Button } from "../../elements";
 import { Table } from "../../collections";
@@ -47,22 +46,7 @@ class Tableview extends PureComponent {
 
   //Initialises the table data
   componentDidMount() {
-    const { primaryActionButton } = this.props;
-    primaryActionButton &&
-      this.primaryButtonRef.current.addEventListener(
-        "click",
-        primaryActionButton
-      );
     this.initTable();
-  }
-
-  componentWillUnmount() {
-    const { primaryActionButton } = this.props;
-    primaryActionButton &&
-      this.primaryButtonRef.current.removeEventListener(
-        "click",
-        primaryActionButton
-      );
   }
 
   //Makes the table info dependant on the state of this view so it can be edited
@@ -93,16 +77,14 @@ class Tableview extends PureComponent {
   };
 
   render() {
-    const { searchbar, editButton, deleteButton } = this.props;
+    const { searchbar, editButton, deleteButton, primaryActionButton } = this.props;
     const { initialTablerows, tableheaderItems, visibleTableRows } = this.state;
-    const { updateRows, primaryButtonRef } = this;
+    const { updateRows } = this;
 
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.actions)}>
-          <RootRef rootRef={primaryButtonRef}>
-            <Button text={"Add article"} iconBefore={"add"} />
-          </RootRef>
+            <Button text={"Add article"} iconBefore={"add"} clickFunc={primaryActionButton}/>
           <Button text={"Filter"} variant={"secondary"} iconBefore={"filter"} />
           {searchbar && (
             <div className={classnames(styles.searchbar)}>

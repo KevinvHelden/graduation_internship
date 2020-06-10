@@ -11,15 +11,26 @@ import tableData from "./components/collections/Table/Fixtures/data";
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeNavigation: false,
+    };
+  }
+
+  toggleNav = () => {
+    const {activeNavigation} = this.state;
+    this.setState({
+      activeNavigation: !activeNavigation
+    });
   }
 
   render() {
+    const { activeNavigation } = this.state;
+    const { toggleNav } = this;
     return (
       <BrowserRouter>
         <div className={classnames(styles.App)}>
-          <Navigation data={appData} />
-          <Hamburger animation={"spring"} activeColour={"light"} />
+          <Navigation data={appData} active={activeNavigation} />
+          <Hamburger animation={"spring"} activeColour={"light"} propsFunc={toggleNav} />
           <main className={classnames(styles.mainContent)}>
             <Switch>
               <Route exact path="/articles">
