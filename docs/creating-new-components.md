@@ -91,7 +91,7 @@ For more information google for
 
 - Classnames is a JavaScript utility for conditionally joining classNames together.
 
-```JavaScript
+```javascript
 // Old usage example
 <main className={"class1" + " " + "class2" + " " + "class3"}>
 ```
