@@ -9,7 +9,7 @@ Before you start, take a moment to see what the project structure looks like:
 ├── /public/            # Static files which are copied into the /build/public folder
 ├── /src/               # The source code of the application
 │ ├── /appFixtures/     # Mockup data used in the table page
-│ ├── /components/      # Project components (in semantic folders see [Terminology](./terminology.md))
+│ ├── /components/      # Project components (in semantic folders see Terminology)
 │ ├── /images/          # Icons and images used in the project
 │ ├── /styling/         # General styling and themes applied on the components
 │ │ ├──  /themes/       # default and brand themes for the component styling
