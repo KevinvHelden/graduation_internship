@@ -15,7 +15,7 @@ class Button extends PureComponent {
     /**
      * The content in the button
      */
-    text: PropTypes.node,
+    text: PropTypes.node.isRequired,
     /**
      * The content in the button
      */
@@ -47,14 +47,11 @@ class Button extends PureComponent {
     /**
      * The external function on the button
      */
-    clickFunc: PropTypes.func,
+    clickFunc: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    text: "Button",
     variant: "primary",
-    rounded: true,
-    square: false,
   };
 
   componentDidMount() {

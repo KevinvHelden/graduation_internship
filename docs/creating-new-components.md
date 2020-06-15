@@ -6,6 +6,7 @@
 - [Separate folder per component](#separate-folder-per-ui-component)
 - [Use CSS Modules](#use-css-modules)
 - [Use Classnames](#use-classnames)
+- [Use PropTypes](#use-proptypes)
 - [Example](#example)
 
 ### Seperate folder per component
@@ -43,6 +44,8 @@ For more information google for
 ### Use CSS Modules
 
 - Use CSS Modules, this will allow using short CSS class names and at the same time avoid conflicts.
+- Instead of using the CSS Modules package simply change the css file name.\
+  You can change the file name from Tablerow.css to Tablerow.module.css
 - Prefer CSS class selectors instead of element and `id` selectors.
 - Combine multiple class selectors when you need to override other styles.
 - Use `.root { }` class name for the root elements of your components.
@@ -86,7 +89,7 @@ For more information google for
 
 ### Use Classnames
 
-Classnames is a JavaScript utility for conditionally joining classNames together.
+- Classnames is a JavaScript utility for conditionally joining classNames together.
 
 ```JavaScript
 // Old usage example
@@ -108,6 +111,56 @@ If you need a class that is based on a conditional you implement this like the f
 ```JavaScript
 // Implementing conditionals with CSS Modules
 <main className={classnames(styles.class1, styles.class2, {[styles.class3] : conditional})}>
+```
+
+### Use PropTypes
+
+- The usage of PropTypes gives clarity on all available props that have been made
+
+```JavaScript
+//Example is taken from components/elements/button
+  static propTypes = {
+    /**
+     * The content in the button
+     */
+    text: PropTypes.node.isRequired,
+    /**
+     * The content in the button
+     */
+    rounded: PropTypes.bool,
+    /**
+     * The button will be a small square with just the icon inside
+     */
+    square: PropTypes.bool,
+    /**
+     * The selected variant of the button
+     */
+    variant: PropTypes.oneOf([
+      "primary",
+      "secondary",
+      "success",
+      "edit",
+      "destructive",
+      "ghost",
+      "word",
+    ]),
+    /**
+     * An icon showed before the text in Button
+     */
+    iconBefore: PropTypes.node,
+    /**
+     * An icon showed after the text in Button
+     */
+    iconAfter: PropTypes.node,
+    /**
+     * The external function on the button
+     */
+    clickFunc: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    variant: "primary",
+  };
 ```
 
 ### Example
