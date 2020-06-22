@@ -1,0 +1,41 @@
+@import "../../../styling//styling.css";
+
+.root {
+  width: 500px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -550px;
+  background-color: var(--white);
+  z-index: 13;
+  border: 1px var(--black) solid;
+  padding: 50px;
+  transition: var(--default-transition);
+}
+
+.root.active {
+  right: 0;
+}
+
+.root .sideMenuNav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.haze {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: var(--default-transition);
+}
+
+.haze.active {
+  z-index: 12;
+  background-color: rgba(0, 0, 0, 0.7);
+}

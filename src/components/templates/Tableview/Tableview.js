@@ -35,6 +35,10 @@ class Tableview extends PureComponent {
      */
     primaryActionButton: PropTypes.func,
     /**
+     * The function for the filter action button
+     */
+    filterButton: PropTypes.func,
+    /**
      * clicking the edit button makes the edit page pop upÎ
      */
     editButton: PropTypes.func,
@@ -77,15 +81,32 @@ class Tableview extends PureComponent {
   };
 
   render() {
-    const { searchbar, editButton, deleteButton, primaryActionButton } = this.props;
+    const {
+      searchbar,
+      editButton,
+      deleteButton,
+      primaryActionButton,
+      filterButton,
+    } = this.props;
     const { initialTablerows, tableheaderItems, visibleTableRows } = this.state;
     const { updateRows } = this;
 
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.actions)}>
-            <Button text={"Add article"} iconBefore={"add"} clickFunc={primaryActionButton}/>
-          <Button text={"Filter"} variant={"secondary"} iconBefore={"filter"} />
+          <Button
+            text={"Add article"}
+            iconBefore={"add"}
+            clickFunc={primaryActionButton}
+          />
+          {filterButton && (
+            <Button
+              text={"Filter"}
+              variant={"secondary"}
+              iconBefore={"filter"}
+              clickFunc={filterButton}
+            />
+          )}
           {searchbar && (
             <div className={classnames(styles.searchbar)}>
               <Searchbar searchItems={initialTablerows} typeFunc={updateRows} />

@@ -4,7 +4,7 @@ import styles from "./Tablepage.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
 import { Tableview } from "../../templates";
-import { PopupPage, Popup } from "../../components";
+import { PopupPage, Popup, SideMenu } from "../../components";
 
 class Tablepage extends PureComponent {
   constructor(props) {
@@ -19,6 +19,7 @@ class Tablepage extends PureComponent {
       },
       popup: { active: false, template: "", purpose: "" },
       selectedRows: [],
+      SideMenuActive: false,
     };
   }
 
@@ -87,6 +88,18 @@ class Tablepage extends PureComponent {
     });
   };
 
+  showSideMenu = () => {
+    this.setState({
+      SideMenuActive: true,
+    })
+  }
+
+  dismissSideMenu = () => {
+    this.setState({
+      SideMenuActive: false,
+    })
+  }
+
   render() {
     const {
       addArticle,
@@ -94,9 +107,11 @@ class Tablepage extends PureComponent {
       openDeleteArticles,
       dismissPopupPage,
       dismissPopup,
+      showSideMenu,
+      dismissSideMenu,
     } = this;
     const { title, data } = this.props;
-    const { popupPage, popup, selectedRows } = this.state;
+    const { popupPage, popup, selectedRows, SideMenuActive } = this.state;
 
     return (
       <Fragment>
@@ -107,11 +122,13 @@ class Tablepage extends PureComponent {
           <Tableview
             data={data}
             primaryActionButton={addArticle}
+            filterButton={showSideMenu}
             editButton={editArticle}
             deleteButton={openDeleteArticles}
             searchbar
           />
         </div>
+        <SideMenu active={SideMenuActive} dismiss={dismissSideMenu} />
         <PopupPage
           active={popupPage.active}
           template={popupPage.template}

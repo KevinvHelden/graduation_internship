@@ -25,7 +25,7 @@
     /* Sizes -------------------------------------------------------------------------------*/
     --themed-icon-size: 15px;
     --themed-button-height: 40px;
-    --themed-button-border-radius: var(--border-radius-large);
+    --themed-button-border-radius: 25px;
   
     /* Layout ------------------------------------------------------------------------------*/
     --themed-layout-small: 15px;
