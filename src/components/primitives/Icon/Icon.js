@@ -18,6 +18,7 @@ class Icon extends PureComponent {
      */
     icon: PropTypes.oneOf([
       "add",
+      "arrowRight",
       "clear",
       "delete",
       "edit",
@@ -50,6 +51,7 @@ class Icon extends PureComponent {
         <img
           src={
             (icon === "add" && Icons.add.src) ||
+            (icon === "arrowRight" && Icons.arrowRight.src) ||
             (icon === "clear" && Icons.clear.src) ||
             (icon === "delete" && Icons.delete.src) ||
             (icon === "edit" && Icons.edit.src) ||

@@ -1,4 +1,5 @@
 import addIcon from "../../../../images/icons/plus.svg";
+import arrowRightIcon from "../../../../images/icons/arrowRight.svg";
 import clearIcon from "../../../../images/icons/cross.svg";
 import deleteIcon from "../../../../images/icons/trashCan.svg";
 import editIcon from "../../../../images/icons/pencil.svg";
@@ -10,18 +11,19 @@ import searchIcon from "../../../../images/icons/magnifyingGlass.svg";
 import settingsIcon from "../../../../images/icons/cog.svg";
 import viewIcon from "../../../../images/icons/eye.svg";
 
-const Icons = { 
-    add: {src: addIcon, alt: "add"},
-    clear: {src: clearIcon, alt: "clear"},
-    delete: {src: deleteIcon, alt: "delete"},
-    edit: {src: editIcon, alt: "edit"},
-    exit: {src: exitIcon, alt: "exit"},
-    filter: {src: filterIcon, alt: "filter"},
-    filter_orange: {src: filterIconOrange, alt: "filter"},
-    save: {src: saveIcon, alt: "save"},
-    search: {src: searchIcon, alt: "search"},
-    settings: {src: settingsIcon, alt: "settings"},
-    view: {src: viewIcon, alt: "view"},
+const Icons = {
+  add: { src: addIcon, alt: "add" },
+  arrowRight: { src: arrowRightIcon, alt: "arrow right" },
+  clear: { src: clearIcon, alt: "clear" },
+  delete: { src: deleteIcon, alt: "delete" },
+  edit: { src: editIcon, alt: "edit" },
+  exit: { src: exitIcon, alt: "exit" },
+  filter: { src: filterIcon, alt: "filter" },
+  filter_orange: { src: filterIconOrange, alt: "filter" },
+  save: { src: saveIcon, alt: "save" },
+  search: { src: searchIcon, alt: "search" },
+  settings: { src: settingsIcon, alt: "settings" },
+  view: { src: viewIcon, alt: "view" },
 };
 
 export default Icons;
