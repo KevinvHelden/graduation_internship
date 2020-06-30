@@ -4,6 +4,8 @@
   width: 500px;
   height: 100vh;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   top: 0;
   right: -550px;
   background-color: var(--white);
@@ -22,6 +24,20 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+}
+
+.root .content {
+  width: 100%;
+  height: auto;
+  margin-top: 75px;
+}
+
+.root .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
 }
 
 .haze {

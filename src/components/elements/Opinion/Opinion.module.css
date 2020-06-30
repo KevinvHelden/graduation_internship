@@ -1,0 +1,34 @@
+@import "../../../styling/styling.css";
+
+.root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.opinionColour {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 50%;
+} 
+
+.negative {
+    background-color: var(--red);
+}
+
+.okay {
+    background-color: var(--orange);
+}
+
+.neutral {
+    background-color: var(--yellow);
+}
+
+.positive {
+    background-color: var(--moss);
+}
+
+.veryPositive {
+    background-color: var(--green);
+}

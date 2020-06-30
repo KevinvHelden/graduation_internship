@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./SideMenu.module.css";
 import classnames from "classnames";
 import { Text } from "../../primitives";
-import { Button } from "../../elements";
+import { Button, Dropdown } from "../../elements";
 
 class SideMenu extends PureComponent {
   constructor(props) {
@@ -50,6 +50,13 @@ class SideMenu extends PureComponent {
               text={"Back"}
               iconAfter={"arrowRight"}
             />
+          </div>
+          <div className={classnames(styles.content)}>
+            <Dropdown />
+          </div>
+          <div className={classnames(styles.actions)}>
+            <Button variant={"edit"} text={"Remove filters"} />
+            <Button text={"Apply filters"} />
           </div>
         </div>
       </Fragment>

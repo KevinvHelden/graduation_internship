@@ -19,6 +19,8 @@ class Icon extends PureComponent {
     icon: PropTypes.oneOf([
       "add",
       "arrowRight",
+      "chevronDown",
+      "chevronUp",
       "clear",
       "delete",
       "edit",
@@ -52,6 +54,8 @@ class Icon extends PureComponent {
           src={
             (icon === "add" && Icons.add.src) ||
             (icon === "arrowRight" && Icons.arrowRight.src) ||
+            (icon === "chevronDown" && Icons.chevronDown.src) ||
+            (icon === "chevronUp" && Icons.chevronUp.src) ||
             (icon === "clear" && Icons.clear.src) ||
             (icon === "delete" && Icons.delete.src) ||
             (icon === "edit" && Icons.edit.src) ||

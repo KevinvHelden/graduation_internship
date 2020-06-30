@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./Tablerow.module.css";
 import classnames from "classnames";
-import { Checkbox } from "../";
+import { Checkbox, Opinion } from "../";
 import { Text } from "../../primitives";
 
 class Tablerow extends PureComponent {
@@ -114,7 +114,13 @@ class Tablerow extends PureComponent {
       formattedData &&
       formattedData.map((dataItem, id) => (
         <div key={id} className={classnames(styles.tablerowItemContainer)}>
-          <Text text={dataItem} key={id} />
+          {
+            (id === 0 ? (
+              <Opinion opinionPercentage={dataItem} />
+            ) : (
+              <Text text={dataItem} key={id} />
+            ))
+          }
         </div>
       ));
     return returnData;
